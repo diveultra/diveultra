@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>VuePress 图片在 GitHub Pages 上正常显示完整教程 | WhatsDive</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="description" content="Java架构师 &amp; 潜水教练的技术博客">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <meta name="keywords" content="Java,微服务,Spring Boot,Spring Cloud,TSF,潜水,PADI,技术博客">
+    <meta name="author" content="Eddy">
+    
+    <link rel="preload" href="/assets/css/0.styles.d8d7ec1b.css" as="style"><link rel="preload" href="/assets/js/app.900574fc.js" as="script"><link rel="preload" href="/assets/js/2.4e96b99c.js" as="script"><link rel="preload" href="/assets/js/1.04576d65.js" as="script"><link rel="preload" href="/assets/js/69.5f2e608b.js" as="script"><link rel="prefetch" href="/assets/js/10.13c76d22.js"><link rel="prefetch" href="/assets/js/11.b6059df8.js"><link rel="prefetch" href="/assets/js/12.a6c01d98.js"><link rel="prefetch" href="/assets/js/13.2524ae8e.js"><link rel="prefetch" href="/assets/js/14.c98930ca.js"><link rel="prefetch" href="/assets/js/15.e0cfa475.js"><link rel="prefetch" href="/assets/js/16.d8647dbf.js"><link rel="prefetch" href="/assets/js/17.c75d90e9.js"><link rel="prefetch" href="/assets/js/18.bbfac717.js"><link rel="prefetch" href="/assets/js/19.a956e14a.js"><link rel="prefetch" href="/assets/js/20.8dae0a83.js"><link rel="prefetch" href="/assets/js/21.c9ef2b29.js"><link rel="prefetch" href="/assets/js/22.4c2b7f49.js"><link rel="prefetch" href="/assets/js/23.69f3bf7b.js"><link rel="prefetch" href="/assets/js/24.f9ab4061.js"><link rel="prefetch" href="/assets/js/25.aa5592bc.js"><link rel="prefetch" href="/assets/js/26.48091b9f.js"><link rel="prefetch" href="/assets/js/27.9a831b4c.js"><link rel="prefetch" href="/assets/js/28.230254c2.js"><link rel="prefetch" href="/assets/js/29.7f196323.js"><link rel="prefetch" href="/assets/js/3.51b160d8.js"><link rel="prefetch" href="/assets/js/30.02342cac.js"><link rel="prefetch" href="/assets/js/31.6a7ae663.js"><link rel="prefetch" href="/assets/js/32.7057535b.js"><link rel="prefetch" href="/assets/js/33.cbcec342.js"><link rel="prefetch" href="/assets/js/34.6e4207bc.js"><link rel="prefetch" href="/assets/js/35.2a50f93c.js"><link rel="prefetch" href="/assets/js/36.007b962b.js"><link rel="prefetch" href="/assets/js/37.b169417e.js"><link rel="prefetch" href="/assets/js/38.4571d8e1.js"><link rel="prefetch" href="/assets/js/39.8b152e9c.js"><link rel="prefetch" href="/assets/js/4.624bb2a1.js"><link rel="prefetch" href="/assets/js/40.f35945ce.js"><link rel="prefetch" href="/assets/js/41.b7f1920d.js"><link rel="prefetch" href="/assets/js/42.2c581d1b.js"><link rel="prefetch" href="/assets/js/43.71232f68.js"><link rel="prefetch" href="/assets/js/44.650e7ba1.js"><link rel="prefetch" href="/assets/js/45.f8ab0026.js"><link rel="prefetch" href="/assets/js/46.2aafc91a.js"><link rel="prefetch" href="/assets/js/47.a3a60173.js"><link rel="prefetch" href="/assets/js/48.5b3f47a4.js"><link rel="prefetch" href="/assets/js/49.abb9bb27.js"><link rel="prefetch" href="/assets/js/5.d598801e.js"><link rel="prefetch" href="/assets/js/50.2a685cbc.js"><link rel="prefetch" href="/assets/js/51.a12abc28.js"><link rel="prefetch" href="/assets/js/52.adbe5422.js"><link rel="prefetch" href="/assets/js/53.ba31add9.js"><link rel="prefetch" href="/assets/js/54.bd5d4c76.js"><link rel="prefetch" href="/assets/js/55.43e8014d.js"><link rel="prefetch" href="/assets/js/56.86df5d7a.js"><link rel="prefetch" href="/assets/js/57.9139c0c6.js"><link rel="prefetch" href="/assets/js/58.362ba749.js"><link rel="prefetch" href="/assets/js/59.a0831951.js"><link rel="prefetch" href="/assets/js/6.7232b5d9.js"><link rel="prefetch" href="/assets/js/60.ebe33e37.js"><link rel="prefetch" href="/assets/js/61.2641dcea.js"><link rel="prefetch" href="/assets/js/62.d0cb2bc1.js"><link rel="prefetch" href="/assets/js/63.1d148233.js"><link rel="prefetch" href="/assets/js/64.a9aa468b.js"><link rel="prefetch" href="/assets/js/65.c5d8d985.js"><link rel="prefetch" href="/assets/js/66.207ba881.js"><link rel="prefetch" href="/assets/js/67.58528c82.js"><link rel="prefetch" href="/assets/js/68.7d0c36eb.js"><link rel="prefetch" href="/assets/js/7.6a879071.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.92fa0d62.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.d8d7ec1b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">WhatsDive</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="PHP开发" class="dropdown-title"><span class="title">PHP开发</span> <span class="arrow down"></span></button> <button type="button" aria-label="PHP开发" class="mobile-dropdown-title"><span class="title">PHP开发</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/PHP/macOS 下利用 Homebrew 管理 PHP 版本全流程.html" class="nav-link">
+  macOS 下利用 Homebrew 管理 PHP 版本全流程
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java开发" class="dropdown-title"><span class="title">Java开发</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java开发" class="mobile-dropdown-title"><span class="title">Java开发</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JAVA/一、微服务介绍.html" class="nav-link">
+  微服务架构
+</a></li><li class="dropdown-item"><!----> <a href="/JAVA/二、Spring-Cloud基础入门.html" class="nav-link">
+  Spring Cloud
+</a></li><li class="dropdown-item"><!----> <a href="/JAVA/三、TSF微服务平台介绍.html" class="nav-link">
+  TSF平台
+</a></li><li class="dropdown-item"><!----> <a href="/JAVA/Oracle 基础.html" class="nav-link">
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/JAVA/IDEA开发环境配置.html" class="nav-link">
+  开发工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="效率工具" class="dropdown-title"><span class="title">效率工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="效率工具" class="mobile-dropdown-title"><span class="title">效率工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/efficiency/开发环境搭建-docker.html" class="nav-link">
+  Docker环境
+</a></li><li class="dropdown-item"><!----> <a href="/efficiency/10分钟教你用 Google Cloud Platform 搭建自己的VPN.html" class="nav-link">
+  VPN搭建
+</a></li><li class="dropdown-item"><!----> <a href="/efficiency/用Cursor开启JAVA+AI生涯.html" class="nav-link">
+  AI开发
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="英语学习" class="dropdown-title"><span class="title">英语学习</span> <span class="arrow down"></span></button> <button type="button" aria-label="英语学习" class="mobile-dropdown-title"><span class="title">英语学习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/english/Oxford Phonics World- The Alphabet.html" class="nav-link">
+  自然拼读
+</a></li><li class="dropdown-item"><!----> <a href="/english/parts-of-speech.html" class="nav-link">
+  语法基础
+</a></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于我
+</a></div> <a href="https://github.com/diveultra/diveultra" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="PHP开发" class="dropdown-title"><span class="title">PHP开发</span> <span class="arrow down"></span></button> <button type="button" aria-label="PHP开发" class="mobile-dropdown-title"><span class="title">PHP开发</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/PHP/macOS 下利用 Homebrew 管理 PHP 版本全流程.html" class="nav-link">
+  macOS 下利用 Homebrew 管理 PHP 版本全流程
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java开发" class="dropdown-title"><span class="title">Java开发</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java开发" class="mobile-dropdown-title"><span class="title">Java开发</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JAVA/一、微服务介绍.html" class="nav-link">
+  微服务架构
+</a></li><li class="dropdown-item"><!----> <a href="/JAVA/二、Spring-Cloud基础入门.html" class="nav-link">
+  Spring Cloud
+</a></li><li class="dropdown-item"><!----> <a href="/JAVA/三、TSF微服务平台介绍.html" class="nav-link">
+  TSF平台
+</a></li><li class="dropdown-item"><!----> <a href="/JAVA/Oracle 基础.html" class="nav-link">
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/JAVA/IDEA开发环境配置.html" class="nav-link">
+  开发工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="效率工具" class="dropdown-title"><span class="title">效率工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="效率工具" class="mobile-dropdown-title"><span class="title">效率工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/efficiency/开发环境搭建-docker.html" class="nav-link">
+  Docker环境
+</a></li><li class="dropdown-item"><!----> <a href="/efficiency/10分钟教你用 Google Cloud Platform 搭建自己的VPN.html" class="nav-link">
+  VPN搭建
+</a></li><li class="dropdown-item"><!----> <a href="/efficiency/用Cursor开启JAVA+AI生涯.html" class="nav-link">
+  AI开发
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="英语学习" class="dropdown-title"><span class="title">英语学习</span> <span class="arrow down"></span></button> <button type="button" aria-label="英语学习" class="mobile-dropdown-title"><span class="title">英语学习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/english/Oxford Phonics World- The Alphabet.html" class="nav-link">
+  自然拼读
+</a></li><li class="dropdown-item"><!----> <a href="/english/parts-of-speech.html" class="nav-link">
+  语法基础
+</a></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于我
+</a></div> <a href="https://github.com/diveultra/diveultra" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <!----> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="vuepress-图片在-github-pages-上正常显示完整教程"><a href="#vuepress-图片在-github-pages-上正常显示完整教程" class="header-anchor">#</a> VuePress 图片在 GitHub Pages 上正常显示完整教程</h1> <h2 id="目录"><a href="#目录" class="header-anchor">#</a> 目录</h2> <ol><li>问题背景：为什么图片显示不出来？</li> <li>VuePress 图片处理机制解析</li> <li>解决方案：使用 public 目录统一管理图片</li> <li>自动化脚本：一键处理图片路径</li> <li>完整工作流程</li> <li>常见问题排查</li> <li>最佳实践建议</li></ol> <hr> <h2 id="_1-问题背景-为什么图片显示不出来"><a href="#_1-问题背景-为什么图片显示不出来" class="header-anchor">#</a> 1. 问题背景：为什么图片显示不出来？</h2> <h3 id="_1-1-常见错误现象"><a href="#_1-1-常见错误现象" class="header-anchor">#</a> 1.1 常见错误现象</h3> <p>在 VuePress 博客部署到 GitHub Pages 后，经常遇到以下问题：</p> <ul><li>❌ <strong>本地 Typora 能正常显示图片，但博客网站显示不出来</strong></li> <li>❌ <strong>图片路径是相对路径，GitHub Pages 访问时路径解析错误</strong></li> <li>❌ <strong>图片放在 <code>.assets</code> 隐藏文件夹，构建时可能被忽略</strong></li> <li>❌ <strong>使用绝对路径（如 <code>/Users/xxx/...</code>），部署后完全失效</strong></li></ul> <h3 id="_1-2-根本原因分析"><a href="#_1-2-根本原因分析" class="header-anchor">#</a> 1.2 根本原因分析</h3> <h4 id="原因一-路径解析差异"><a href="#原因一-路径解析差异" class="header-anchor">#</a> 原因一：路径解析差异</h4> <p><strong>本地开发环境：</strong></p> <ul><li>Markdown 编辑器（如 Typora）直接读取本地文件系统</li> <li>相对路径 <code>./xxx.assets/image.png</code> 基于当前 Markdown 文件的磁盘位置解析</li> <li>可以正常显示</li></ul> <p><strong>GitHub Pages 部署环境：</strong></p> <ul><li>所有文件都通过 HTTP 访问</li> <li>相对路径基于<strong>网站根目录</strong>解析，而不是 Markdown 文件位置</li> <li>如果图片路径是 <code>./xxx.assets/image.png</code>，浏览器会尝试访问 <code>https://your-site.github.io/xxx.assets/image.png</code></li> <li>但实际构建后的文件结构可能不同，导致 404</li></ul> <h4 id="原因二-vuepress-构建机制"><a href="#原因二-vuepress-构建机制" class="header-anchor">#</a> 原因二：VuePress 构建机制</h4> <p>VuePress 在构建时会：</p> <ol><li>将 <code>docs/</code> 目录下的 Markdown 文件编译为 HTML</li> <li>将 <code>docs/.vuepress/public/</code> 目录下的文件<strong>原样复制</strong>到构建输出的根目录</li> <li>其他资源文件需要正确引用才能被打包</li></ol> <p><strong>关键点：</strong> <code>public/</code> 目录下的文件会直接映射到网站根目录！</p> <hr> <h2 id="_2-vuepress-图片处理机制解析"><a href="#_2-vuepress-图片处理机制解析" class="header-anchor">#</a> 2. VuePress 图片处理机制解析</h2> <h3 id="_2-1-vuepress-目录结构"><a href="#_2-1-vuepress-目录结构" class="header-anchor">#</a> 2.1 VuePress 目录结构</h3> <div class="language- extra-class"><pre class="language-text"><code>vuepress-diveultra/
+├── docs/
+│   ├── .vuepress/
+│   │   ├── public/          # 静态资源目录（重要！）
+│   │   │   └── images/      # 图片统一存放位置
+│   │   ├── config.js        # 配置文件
+│   │   └── scripts/        # 自定义脚本
+│   ├── PHP/
+│   │   ├── xxx.md
+│   │   └── xxx.assets/      # Typora 自动生成的图片目录
+│   └── ...
+└── package.json
+</code></pre></div><h3 id="_2-2-public-目录的作用"><a href="#_2-2-public-目录的作用" class="header-anchor">#</a> 2.2 public 目录的作用</h3> <p><code>docs/.vuepress/public/</code> 目录中的文件：</p> <ul><li>✅ <strong>构建时会原样复制到 <code>dist/</code> 根目录</strong></li> <li>✅ <strong>可以通过绝对路径 <code>/images/xxx.png</code> 访问</strong></li> <li>✅ <strong>不受 Markdown 文件位置影响</strong></li></ul> <p><strong>示例：</strong></p> <ul><li>源文件：<code>docs/.vuepress/public/images/logo.png</code></li> <li>构建后：<code>dist/images/logo.png</code></li> <li>访问路径：<code>https://your-site.github.io/images/logo.png</code></li></ul> <h3 id="_2-3-图片路径引用方式对比"><a href="#_2-3-图片路径引用方式对比" class="header-anchor">#</a> 2.3 图片路径引用方式对比</h3> <table><thead><tr><th>引用方式</th> <th>本地 Typora</th> <th>GitHub Pages</th> <th>推荐度</th></tr></thead> <tbody><tr><td><code>./xxx.assets/image.png</code></td> <td>✅ 正常</td> <td>❌ 可能失败</td> <td>⭐⭐</td></tr> <tr><td><code>../assets/image.png</code></td> <td>✅ 正常</td> <td>❌ 可能失败</td> <td>⭐⭐</td></tr> <tr><td><code>/images/image.png</code></td> <td>❌ 无法显示</td> <td>✅ 正常</td> <td>⭐⭐⭐⭐⭐</td></tr> <tr><td><code>/Users/xxx/...</code></td> <td>✅ 正常</td> <td>❌ 完全失效</td> <td>❌</td></tr></tbody></table> <p><strong>结论：</strong> 使用 <code>/images/xxx.png</code> 格式，既能在 GitHub Pages 正常显示，又能通过自动化脚本在本地和部署环境之间切换。</p> <hr> <h2 id="_3-解决方案-使用-public-目录统一管理图片"><a href="#_3-解决方案-使用-public-目录统一管理图片" class="header-anchor">#</a> 3. 解决方案：使用 public 目录统一管理图片</h2> <h3 id="_3-1-方案概述"><a href="#_3-1-方案概述" class="header-anchor">#</a> 3.1 方案概述</h3> <p><strong>核心思路：</strong></p> <ol><li>将所有需要发布的图片统一放到 <code>docs/.vuepress/public/images/</code> 目录</li> <li>在 Markdown 文件中使用绝对路径 <code>/images/xxx.png</code> 引用</li> <li>构建时图片会自动复制到 <code>dist/images/</code>，部署后可以正常访问</li></ol> <h3 id="_3-2-手动操作步骤"><a href="#_3-2-手动操作步骤" class="header-anchor">#</a> 3.2 手动操作步骤</h3> <h4 id="步骤-1-创建图片目录"><a href="#步骤-1-创建图片目录" class="header-anchor">#</a> 步骤 1：创建图片目录</h4> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">mkdir</span> <span class="token parameter variable">-p</span> docs/.vuepress/public/images
+</code></pre></div><h4 id="步骤-2-复制图片到-public-images"><a href="#步骤-2-复制图片到-public-images" class="header-anchor">#</a> 步骤 2：复制图片到 public/images</h4> <p>将你的图片文件（从 <code>.assets</code> 目录或其他位置）复制到 <code>public/images/</code>：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 示例：复制 PHP 目录下的图片</span>
+<span class="token function">cp</span> docs/PHP/macOS<span class="token punctuation">\</span> 下利用<span class="token punctuation">\</span> Homebrew<span class="token punctuation">\</span> 管理<span class="token punctuation">\</span> PHP<span class="token punctuation">\</span> 版本全流程.assets/*.png <span class="token punctuation">\</span>
+   docs/.vuepress/public/images/
+</code></pre></div><h4 id="步骤-3-修改-markdown-文件中的图片路径"><a href="#步骤-3-修改-markdown-文件中的图片路径" class="header-anchor">#</a> 步骤 3：修改 Markdown 文件中的图片路径</h4> <p><strong>修改前：</strong></p> <div class="language-markdown extra-class"><pre class="language-markdown"><code>![描述](./macOS 下利用 Homebrew 管理 PHP 版本全流程.assets/image-xxx.png)
+</code></pre></div><p><strong>修改后：</strong></p> <div class="language-markdown extra-class"><pre class="language-markdown"><code><span class="token url"><span class="token operator">!</span>[<span class="token content">描述</span>](<span class="token url">/images/image-xxx.png</span>)</span>
+</code></pre></div><h4 id="步骤-4-构建和部署"><a href="#步骤-4-构建和部署" class="header-anchor">#</a> 步骤 4：构建和部署</h4> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">npm</span> run build
+<span class="token function">npm</span> run deploy
+</code></pre></div><h3 id="_3-3-方案优缺点"><a href="#_3-3-方案优缺点" class="header-anchor">#</a> 3.3 方案优缺点</h3> <p><strong>优点：</strong></p> <ul><li>✅ 图片路径统一，易于管理</li> <li>✅ GitHub Pages 100% 可以正常显示</li> <li>✅ 不受 Markdown 文件位置影响</li></ul> <p><strong>缺点：</strong></p> <ul><li>❌ 本地 Typora 无法直接预览（因为 <code>/images/</code> 是网站路径）</li> <li>❌ 需要手动维护两套路径（本地用相对路径，部署用绝对路径）</li></ul> <hr> <h2 id="_4-自动化脚本-一键处理图片路径"><a href="#_4-自动化脚本-一键处理图片路径" class="header-anchor">#</a> 4. 自动化脚本：一键处理图片路径</h2> <p>为了解决手动操作的痛点，我们创建了自动化脚本，实现<strong>本地编辑和博客部署两不误</strong>。</p> <h3 id="_4-1-脚本功能"><a href="#_4-1-脚本功能" class="header-anchor">#</a> 4.1 脚本功能</h3> <p>脚本位置：<code>docs/.vuepress/scripts/prepare-blog-images.js</code></p> <p><strong>核心功能：</strong></p> <ol><li><p><strong>发布前准备（prepare）：</strong></p> <ul><li>自动将 Markdown 中的相对路径替换为 <code>/images/xxx.png</code></li> <li>自动复制 <code>.assets</code> 目录下的图片到 <code>public/images/</code></li> <li>保存原始路径到备份文件，用于后续恢复</li></ul></li> <li><p><strong>发布后恢复（restore）：</strong></p> <ul><li>根据备份文件恢复所有图片路径为原始相对路径</li> <li>删除备份文件</li> <li>恢复后本地 Typora 可以正常显示</li></ul></li></ol> <h3 id="_4-2-脚本支持的路径格式"><a href="#_4-2-脚本支持的路径格式" class="header-anchor">#</a> 4.2 脚本支持的路径格式</h3> <p>脚本可以自动处理以下格式的图片路径：</p> <ol><li><p><strong>相对路径（.assets 目录）：</strong></p> <div class="language-markdown extra-class"><pre class="language-markdown"><code><span class="token url"><span class="token operator">!</span>[<span class="token content">alt</span>](<span class="token url">./xxx.assets/image.png</span>)</span>
+<span class="token url"><span class="token operator">!</span>[<span class="token content">alt</span>](<span class="token url">xxx.assets/image.png</span>)</span>
+</code></pre></div></li> <li><p><strong>绝对路径（包含 public/images）：</strong></p> <div class="language-markdown extra-class"><pre class="language-markdown"><code><span class="token url"><span class="token operator">!</span>[<span class="token content">alt</span>](<span class="token url">/Users/xxx/docs/.vuepress/public/images/image.png</span>)</span>
+</code></pre></div></li> <li><p><strong>已经是 /images/ 格式的会跳过：</strong></p> <div class="language-markdown extra-class"><pre class="language-markdown"><code><span class="token url"><span class="token operator">!</span>[<span class="token content">alt</span>](<span class="token url">/images/image.png</span>)</span>  # 不处理
+</code></pre></div></li></ol> <h3 id="_4-3-使用方法"><a href="#_4-3-使用方法" class="header-anchor">#</a> 4.3 使用方法</h3> <h4 id="安装脚本-已集成到-package-json"><a href="#安装脚本-已集成到-package-json" class="header-anchor">#</a> 安装脚本（已集成到 package.json）</h4> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+  <span class="token property">&quot;scripts&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">&quot;blog:prepare&quot;</span><span class="token operator">:</span> <span class="token string">&quot;node ./docs/.vuepress/scripts/prepare-blog-images.js prepare&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;blog:restore&quot;</span><span class="token operator">:</span> <span class="token string">&quot;node ./docs/.vuepress/scripts/prepare-blog-images.js restore&quot;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="发布前准备"><a href="#发布前准备" class="header-anchor">#</a> 发布前准备</h4> <p><strong>处理整个 docs 目录：</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">npm</span> run blog:prepare
+</code></pre></div><p><strong>处理指定目录：</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">npm</span> run blog:prepare -- docs/english
+<span class="token function">npm</span> run blog:prepare -- docs/PHP
+<span class="token function">npm</span> run blog:prepare -- english  <span class="token comment"># 自动加上 docs/ 前缀</span>
+</code></pre></div><p><strong>执行效果：</strong></p> <ul><li>✅ 所有图片路径替换为 <code>/images/xxx.png</code></li> <li>✅ 图片复制到 <code>public/images/</code></li> <li>✅ 备份文件保存到 <code>.vuepress/.image-path-backup.json</code></li></ul> <h4 id="发布后恢复"><a href="#发布后恢复" class="header-anchor">#</a> 发布后恢复</h4> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">npm</span> run blog:restore
+</code></pre></div><p><strong>执行效果：</strong></p> <ul><li>✅ 所有图片路径恢复为原始相对路径</li> <li>✅ 本地 Typora 可以正常显示</li> <li>✅ 备份文件被删除</li></ul> <hr> <h2 id="_5-完整工作流程"><a href="#_5-完整工作流程" class="header-anchor">#</a> 5. 完整工作流程</h2> <h3 id="_5-1-日常写作流程"><a href="#_5-1-日常写作流程" class="header-anchor">#</a> 5.1 日常写作流程</h3> <div class="language-mermaid extra-class"><pre class="language-mermaid"><code><span class="token keyword">graph</span> LR
+    A<span class="token text string">[Typora 写作]</span> <span class="token arrow operator">--&gt;</span> B<span class="token text string">[粘贴图片到文档]</span>
+    B <span class="token arrow operator">--&gt;</span> C<span class="token text string">[图片自动保存到 .assets 目录]</span>
+    C <span class="token arrow operator">--&gt;</span> D<span class="token text string">[使用相对路径引用]</span>
+    D <span class="token arrow operator">--&gt;</span> E<span class="token text string">[本地完美预览]</span>
+</code></pre></div><p><strong>操作步骤：</strong></p> <ol><li>在 Typora 中正常写作</li> <li>直接粘贴图片，Typora 会自动保存到 <code>文档名.assets/</code> 目录</li> <li>图片路径自动生成为相对路径，如 <code>./xxx.assets/image.png</code></li> <li>本地可以完美预览，写作体验不受影响</li></ol> <h3 id="_5-2-发布博客流程"><a href="#_5-2-发布博客流程" class="header-anchor">#</a> 5.2 发布博客流程</h3> <div class="language-mermaid extra-class"><pre class="language-mermaid"><code><span class="token keyword">graph</span> LR
+    A<span class="token text string">[准备发布]</span> <span class="token arrow operator">--&gt;</span> B<span class="token text string">[npm run blog:prepare]</span>
+    B <span class="token arrow operator">--&gt;</span> C<span class="token text string">[路径替换 + 图片复制]</span>
+    C <span class="token arrow operator">--&gt;</span> D<span class="token text string">[npm run build]</span>
+    D <span class="token arrow operator">--&gt;</span> E<span class="token text string">[npm run deploy]</span>
+    E <span class="token arrow operator">--&gt;</span> F<span class="token text string">[GitHub Pages 正常显示]</span>
+    F <span class="token arrow operator">--&gt;</span> G<span class="token text string">[npm run blog:restore]</span>
+    G <span class="token arrow operator">--&gt;</span> H<span class="token text string">[恢复本地路径]</span>
+</code></pre></div><p><strong>详细步骤：</strong></p> <h4 id="步骤-1-发布前准备"><a href="#步骤-1-发布前准备" class="header-anchor">#</a> 步骤 1：发布前准备</h4> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 处理需要发布的目录（例如 english 目录）</span>
+<span class="token function">npm</span> run blog:prepare -- docs/english
+
+<span class="token comment"># 或者处理整个 docs 目录</span>
+<span class="token function">npm</span> run blog:prepare
+</code></pre></div><p><strong>输出示例：</strong></p> <div class="language- extra-class"><pre class="language-text"><code>开始处理目录: /Users/eddy/vuepress-diveultra/docs/english
+✓ 已处理: docs/english/Oxford Phonics World- The Alphabet.md (25 张图片)
+✓ 已处理: docs/english/parts-of-speech.md (1 张图片)
+
+✓ 完成！
+  - 已处理 2 个 Markdown 文件
+  - 已复制 26 张图片到 public/images/
+  - 备份信息已保存到: .vuepress/.image-path-backup.json
+
+现在可以执行: npm run build
+</code></pre></div><h4 id="步骤-2-构建和部署"><a href="#步骤-2-构建和部署" class="header-anchor">#</a> 步骤 2：构建和部署</h4> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">npm</span> run build
+<span class="token function">npm</span> run deploy
+</code></pre></div><h4 id="步骤-3-发布后恢复-可选"><a href="#步骤-3-发布后恢复-可选" class="header-anchor">#</a> 步骤 3：发布后恢复（可选）</h4> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">npm</span> run blog:restore
+</code></pre></div><p><strong>输出示例：</strong></p> <div class="language- extra-class"><pre class="language-text"><code>✓ 已恢复: docs/english/Oxford Phonics World- The Alphabet.md
+✓ 已恢复: docs/english/parts-of-speech.md
+
+✓ 完成！已恢复 26 处图片路径
+  现在本地 Typora 可以正常显示图片了
+</code></pre></div><h3 id="_5-3-工作流程对比"><a href="#_5-3-工作流程对比" class="header-anchor">#</a> 5.3 工作流程对比</h3> <table><thead><tr><th>阶段</th> <th>本地写作</th> <th>博客部署</th></tr></thead> <tbody><tr><td><strong>图片路径</strong></td> <td><code>./xxx.assets/image.png</code></td> <td><code>/images/image.png</code></td></tr> <tr><td><strong>图片位置</strong></td> <td><code>docs/xxx/xxx.assets/</code></td> <td><code>docs/.vuepress/public/images/</code></td></tr> <tr><td><strong>预览效果</strong></td> <td>✅ Typora 正常显示</td> <td>✅ GitHub Pages 正常显示</td></tr> <tr><td><strong>切换方式</strong></td> <td>手动 or 脚本自动</td> <td>脚本自动处理</td></tr></tbody></table> <hr> <h2 id="_6-常见问题排查"><a href="#_6-常见问题排查" class="header-anchor">#</a> 6. 常见问题排查</h2> <h3 id="_6-1-问题-执行-prepare-后-本地-typora-看不到图片"><a href="#_6-1-问题-执行-prepare-后-本地-typora-看不到图片" class="header-anchor">#</a> 6.1 问题：执行 prepare 后，本地 Typora 看不到图片</h3> <p><strong>原因：</strong> 图片路径已改为 <code>/images/xxx.png</code>，这是网站路径，本地文件系统无法解析。</p> <p><strong>解决：</strong></p> <ol><li>发布前才执行 <code>prepare</code>，平时写作不要执行</li> <li>发布后执行 <code>restore</code> 恢复本地路径</li> <li>或者使用 Git 分支管理：<code>main</code> 分支保持相对路径，<code>gh-pages</code> 分支使用绝对路径</li></ol> <h3 id="_6-2-问题-github-pages-上图片显示-404"><a href="#_6-2-问题-github-pages-上图片显示-404" class="header-anchor">#</a> 6.2 问题：GitHub Pages 上图片显示 404</h3> <p><strong>排查步骤：</strong></p> <ol><li><p><strong>检查图片是否在 public/images/ 目录：</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">ls</span> docs/.vuepress/public/images/
+</code></pre></div></li> <li><p><strong>检查构建后的 dist 目录：</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">ls</span> docs/.vuepress/dist/images/
+</code></pre></div><p>如果图片不在 dist 目录，说明构建时没有正确复制。</p></li> <li><p><strong>检查 Markdown 中的路径格式：</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">grep</span> <span class="token parameter variable">-r</span> <span class="token string">&quot;\.assets&quot;</span> docs/english/*.md
+</code></pre></div><p>如果还有 <code>.assets</code> 路径，说明 prepare 没有执行或执行失败。</p></li> <li><p><strong>检查 GitHub Pages 设置：</strong></p> <ul><li>确保发布源是 <code>gh-pages</code> 分支</li> <li>确保发布目录是 <code>/ (root)</code></li></ul></li> <li><p><strong>检查图片文件名：</strong></p> <ul><li>避免中文和特殊字符</li> <li>建议使用英文、数字、连字符、下划线</li></ul></li></ol> <h3 id="_6-3-问题-执行-restore-后找不到备份文件"><a href="#_6-3-问题-执行-restore-后找不到备份文件" class="header-anchor">#</a> 6.3 问题：执行 restore 后找不到备份文件</h3> <p><strong>原因：</strong> 备份文件可能被误删，或者没有执行过 prepare。</p> <p><strong>解决：</strong></p> <ol><li><p>检查备份文件是否存在：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">ls</span> docs/.vuepress/.image-path-backup.json
+</code></pre></div></li> <li><p>如果文件不存在，需要重新执行 prepare 才能 restore</p></li> <li><p>如果备份文件损坏，可以手动恢复：</p> <ul><li>查看 Git 历史记录</li> <li>或者重新执行 prepare（会覆盖当前路径）</li></ul></li></ol> <h3 id="_6-4-问题-图片文件名冲突"><a href="#_6-4-问题-图片文件名冲突" class="header-anchor">#</a> 6.4 问题：图片文件名冲突</h3> <p><strong>原因：</strong> 不同目录下的 <code>.assets</code> 文件夹可能有同名图片。</p> <p><strong>解决：</strong></p> <ol><li>脚本会自动处理：后复制的图片会覆盖先复制的（同名文件）</li> <li>建议：在 prepare 前检查是否有同名图片：<div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">find</span> docs <span class="token parameter variable">-name</span> <span class="token string">&quot;*.png&quot;</span> <span class="token parameter variable">-path</span> <span class="token string">&quot;*.assets/*&quot;</span> <span class="token operator">|</span> <span class="token function">xargs</span> <span class="token parameter variable">-I</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token function">basename</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token operator">|</span> <span class="token function">sort</span> <span class="token operator">|</span> <span class="token function">uniq</span> <span class="token parameter variable">-d</span>
+</code></pre></div></li> <li>如果发现冲突，可以手动重命名图片</li></ol> <h3 id="_6-5-问题-脚本执行报错-目录不存在"><a href="#_6-5-问题-脚本执行报错-目录不存在" class="header-anchor">#</a> 6.5 问题：脚本执行报错 &quot;目录不存在&quot;</h3> <p><strong>原因：</strong> 路径参数错误。</p> <p><strong>解决：</strong></p> <ul><li>使用相对路径：<code>docs/english</code> 或 <code>english</code></li> <li>不要使用绝对路径</li> <li>确保在项目根目录执行命令</li></ul> <hr> <h2 id="_7-最佳实践建议"><a href="#_7-最佳实践建议" class="header-anchor">#</a> 7. 最佳实践建议</h2> <h3 id="_7-1-图片命名规范"><a href="#_7-1-图片命名规范" class="header-anchor">#</a> 7.1 图片命名规范</h3> <p><strong>推荐格式：</strong></p> <div class="language- extra-class"><pre class="language-text"><code>image-20251226102056328.png
+screenshot-2025-01-01.png
+diagram-flowchart.png
+</code></pre></div><p><strong>避免：</strong></p> <div class="language- extra-class"><pre class="language-text"><code>图片1.png          # 中文
+my image.png       # 空格
+image@2025.png     # 特殊字符
+</code></pre></div><h3 id="_7-2-目录组织建议"><a href="#_7-2-目录组织建议" class="header-anchor">#</a> 7.2 目录组织建议</h3> <p><strong>方案一：按文章分类（推荐）</strong></p> <div class="language- extra-class"><pre class="language-text"><code>docs/
+├── PHP/
+│   ├── article1.md
+│   └── article1.assets/
+├── JAVA/
+│   ├── article2.md
+│   └── article2.assets/
+└── .vuepress/
+    └── public/
+        └── images/  # 所有图片统一存放
+</code></pre></div><p><strong>方案二：按日期分类</strong></p> <div class="language- extra-class"><pre class="language-text"><code>docs/.vuepress/public/images/
+├── 2025/
+│   ├── 01/
+│   │   └── image-xxx.png
+│   └── 02/
+└── 2024/
+</code></pre></div><h3 id="_7-3-git-管理建议"><a href="#_7-3-git-管理建议" class="header-anchor">#</a> 7.3 Git 管理建议</h3> <p><strong>推荐 .gitignore 配置：</strong></p> <div class="language- extra-class"><pre class="language-text"><code># 备份文件（自动生成，不需要提交）
+docs/.vuepress/.image-path-backup.json
+
+# 构建输出（不需要提交）
+docs/.vuepress/dist/
+node_modules/
+</code></pre></div><p><strong>提交策略：</strong></p> <ul><li>✅ 提交原始 Markdown 文件（相对路径）</li> <li>✅ 提交 <code>public/images/</code> 目录下的图片</li> <li>❌ 不提交备份文件</li> <li>❌ 不提交构建输出</li></ul> <h3 id="_7-4-工作流程优化"><a href="#_7-4-工作流程优化" class="header-anchor">#</a> 7.4 工作流程优化</h3> <p><strong>使用 Git 分支管理（高级）：</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># main 分支：保持相对路径，用于本地编辑</span>
+<span class="token function">git</span> checkout main
+
+<span class="token comment"># 发布时：切换到 deploy 分支</span>
+<span class="token function">git</span> checkout <span class="token parameter variable">-b</span> deploy
+<span class="token function">npm</span> run blog:prepare
+<span class="token function">npm</span> run build
+<span class="token comment"># 提交构建结果到 gh-pages 分支</span>
+<span class="token function">git</span> subtree push <span class="token parameter variable">--prefix</span> docs/.vuepress/dist origin gh-pages
+
+<span class="token comment"># 切回 main 分支继续编辑</span>
+<span class="token function">git</span> checkout main
+</code></pre></div><h3 id="_7-5-性能优化建议"><a href="#_7-5-性能优化建议" class="header-anchor">#</a> 7.5 性能优化建议</h3> <ol><li><strong>图片压缩：</strong> 使用工具压缩图片（如 TinyPNG）减少文件大小</li> <li><strong>图片格式：</strong> 优先使用 WebP 格式（需要浏览器支持）</li> <li><strong>懒加载：</strong> 使用 VuePress 插件实现图片懒加载</li> <li><strong>CDN：</strong> 将图片放到 CDN（如 GitHub Issues、云存储）</li></ol> <hr> <h2 id="_8-总结"><a href="#_8-总结" class="header-anchor">#</a> 8. 总结</h2> <h3 id="核心要点"><a href="#核心要点" class="header-anchor">#</a> 核心要点</h3> <ol><li><strong>问题根源：</strong> 本地文件系统和 HTTP 服务器的路径解析机制不同</li> <li><strong>解决方案：</strong> 使用 <code>public/images/</code> 目录 + 绝对路径 <code>/images/xxx.png</code></li> <li><strong>自动化工具：</strong> 使用脚本在本地路径和部署路径之间自动切换</li> <li><strong>最佳实践：</strong> 本地写作用相对路径，部署时自动转换为绝对路径</li></ol> <h3 id="快速参考"><a href="#快速参考" class="header-anchor">#</a> 快速参考</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 发布前：准备图片路径</span>
+<span class="token function">npm</span> run blog:prepare -- docs/english
+
+<span class="token comment"># 构建和部署</span>
+<span class="token function">npm</span> run build
+<span class="token function">npm</span> run deploy
+
+<span class="token comment"># 发布后：恢复本地路径（可选）</span>
+<span class="token function">npm</span> run blog:restore
+</code></pre></div><h3 id="相关资源"><a href="#相关资源" class="header-anchor">#</a> 相关资源</h3> <ul><li><a href="https://vuepress.vuejs.org/zh/guide/assets.html" target="_blank" rel="noopener noreferrer">VuePress 官方文档 - 静态资源<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://docs.github.com/en/pages" target="_blank" rel="noopener noreferrer">GitHub Pages 文档<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>项目脚本位置：<code>docs/.vuepress/scripts/prepare-blog-images.js</code></li></ul> <hr> <p><strong>祝你博客图片显示顺利！</strong> 🎉</p></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.900574fc.js" defer></script><script src="/assets/js/2.4e96b99c.js" defer></script><script src="/assets/js/1.04576d65.js" defer></script><script src="/assets/js/69.5f2e608b.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>centos7 利用docker安装部署oracle11 | WhatsDive</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="description" content="Java架构师 &amp; 潜水教练的技术博客">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <meta name="keywords" content="Java,微服务,Spring Boot,Spring Cloud,TSF,潜水,PADI,技术博客">
+    <meta name="author" content="Eddy">
+    
+    <link rel="preload" href="/assets/css/0.styles.d8d7ec1b.css" as="style"><link rel="preload" href="/assets/js/app.900574fc.js" as="script"><link rel="preload" href="/assets/js/2.4e96b99c.js" as="script"><link rel="preload" href="/assets/js/1.04576d65.js" as="script"><link rel="preload" href="/assets/js/30.02342cac.js" as="script"><link rel="prefetch" href="/assets/js/10.13c76d22.js"><link rel="prefetch" href="/assets/js/11.b6059df8.js"><link rel="prefetch" href="/assets/js/12.a6c01d98.js"><link rel="prefetch" href="/assets/js/13.2524ae8e.js"><link rel="prefetch" href="/assets/js/14.c98930ca.js"><link rel="prefetch" href="/assets/js/15.e0cfa475.js"><link rel="prefetch" href="/assets/js/16.d8647dbf.js"><link rel="prefetch" href="/assets/js/17.c75d90e9.js"><link rel="prefetch" href="/assets/js/18.bbfac717.js"><link rel="prefetch" href="/assets/js/19.a956e14a.js"><link rel="prefetch" href="/assets/js/20.8dae0a83.js"><link rel="prefetch" href="/assets/js/21.c9ef2b29.js"><link rel="prefetch" href="/assets/js/22.4c2b7f49.js"><link rel="prefetch" href="/assets/js/23.69f3bf7b.js"><link rel="prefetch" href="/assets/js/24.f9ab4061.js"><link rel="prefetch" href="/assets/js/25.aa5592bc.js"><link rel="prefetch" href="/assets/js/26.48091b9f.js"><link rel="prefetch" href="/assets/js/27.9a831b4c.js"><link rel="prefetch" href="/assets/js/28.230254c2.js"><link rel="prefetch" href="/assets/js/29.7f196323.js"><link rel="prefetch" href="/assets/js/3.51b160d8.js"><link rel="prefetch" href="/assets/js/31.6a7ae663.js"><link rel="prefetch" href="/assets/js/32.7057535b.js"><link rel="prefetch" href="/assets/js/33.cbcec342.js"><link rel="prefetch" href="/assets/js/34.6e4207bc.js"><link rel="prefetch" href="/assets/js/35.2a50f93c.js"><link rel="prefetch" href="/assets/js/36.007b962b.js"><link rel="prefetch" href="/assets/js/37.b169417e.js"><link rel="prefetch" href="/assets/js/38.4571d8e1.js"><link rel="prefetch" href="/assets/js/39.8b152e9c.js"><link rel="prefetch" href="/assets/js/4.624bb2a1.js"><link rel="prefetch" href="/assets/js/40.f35945ce.js"><link rel="prefetch" href="/assets/js/41.b7f1920d.js"><link rel="prefetch" href="/assets/js/42.2c581d1b.js"><link rel="prefetch" href="/assets/js/43.71232f68.js"><link rel="prefetch" href="/assets/js/44.650e7ba1.js"><link rel="prefetch" href="/assets/js/45.f8ab0026.js"><link rel="prefetch" href="/assets/js/46.2aafc91a.js"><link rel="prefetch" href="/assets/js/47.a3a60173.js"><link rel="prefetch" href="/assets/js/48.5b3f47a4.js"><link rel="prefetch" href="/assets/js/49.abb9bb27.js"><link rel="prefetch" href="/assets/js/5.d598801e.js"><link rel="prefetch" href="/assets/js/50.2a685cbc.js"><link rel="prefetch" href="/assets/js/51.a12abc28.js"><link rel="prefetch" href="/assets/js/52.adbe5422.js"><link rel="prefetch" href="/assets/js/53.ba31add9.js"><link rel="prefetch" href="/assets/js/54.bd5d4c76.js"><link rel="prefetch" href="/assets/js/55.43e8014d.js"><link rel="prefetch" href="/assets/js/56.86df5d7a.js"><link rel="prefetch" href="/assets/js/57.9139c0c6.js"><link rel="prefetch" href="/assets/js/58.362ba749.js"><link rel="prefetch" href="/assets/js/59.a0831951.js"><link rel="prefetch" href="/assets/js/6.7232b5d9.js"><link rel="prefetch" href="/assets/js/60.ebe33e37.js"><link rel="prefetch" href="/assets/js/61.2641dcea.js"><link rel="prefetch" href="/assets/js/62.d0cb2bc1.js"><link rel="prefetch" href="/assets/js/63.1d148233.js"><link rel="prefetch" href="/assets/js/64.a9aa468b.js"><link rel="prefetch" href="/assets/js/65.c5d8d985.js"><link rel="prefetch" href="/assets/js/66.207ba881.js"><link rel="prefetch" href="/assets/js/67.58528c82.js"><link rel="prefetch" href="/assets/js/68.7d0c36eb.js"><link rel="prefetch" href="/assets/js/69.5f2e608b.js"><link rel="prefetch" href="/assets/js/7.6a879071.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.92fa0d62.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.d8d7ec1b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">WhatsDive</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="PHP开发" class="dropdown-title"><span class="title">PHP开发</span> <span class="arrow down"></span></button> <button type="button" aria-label="PHP开发" class="mobile-dropdown-title"><span class="title">PHP开发</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/PHP/macOS 下利用 Homebrew 管理 PHP 版本全流程.html" class="nav-link">
+  macOS 下利用 Homebrew 管理 PHP 版本全流程
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java开发" class="dropdown-title"><span class="title">Java开发</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java开发" class="mobile-dropdown-title"><span class="title">Java开发</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JAVA/一、微服务介绍.html" class="nav-link">
+  微服务架构
+</a></li><li class="dropdown-item"><!----> <a href="/JAVA/二、Spring-Cloud基础入门.html" class="nav-link">
+  Spring Cloud
+</a></li><li class="dropdown-item"><!----> <a href="/JAVA/三、TSF微服务平台介绍.html" class="nav-link">
+  TSF平台
+</a></li><li class="dropdown-item"><!----> <a href="/JAVA/Oracle 基础.html" class="nav-link">
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/JAVA/IDEA开发环境配置.html" class="nav-link">
+  开发工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="效率工具" class="dropdown-title"><span class="title">效率工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="效率工具" class="mobile-dropdown-title"><span class="title">效率工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/efficiency/开发环境搭建-docker.html" class="nav-link">
+  Docker环境
+</a></li><li class="dropdown-item"><!----> <a href="/efficiency/10分钟教你用 Google Cloud Platform 搭建自己的VPN.html" class="nav-link">
+  VPN搭建
+</a></li><li class="dropdown-item"><!----> <a href="/efficiency/用Cursor开启JAVA+AI生涯.html" class="nav-link">
+  AI开发
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="英语学习" class="dropdown-title"><span class="title">英语学习</span> <span class="arrow down"></span></button> <button type="button" aria-label="英语学习" class="mobile-dropdown-title"><span class="title">英语学习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/english/Oxford Phonics World- The Alphabet.html" class="nav-link">
+  自然拼读
+</a></li><li class="dropdown-item"><!----> <a href="/english/parts-of-speech.html" class="nav-link">
+  语法基础
+</a></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于我
+</a></div> <a href="https://github.com/diveultra/diveultra" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="PHP开发" class="dropdown-title"><span class="title">PHP开发</span> <span class="arrow down"></span></button> <button type="button" aria-label="PHP开发" class="mobile-dropdown-title"><span class="title">PHP开发</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/PHP/macOS 下利用 Homebrew 管理 PHP 版本全流程.html" class="nav-link">
+  macOS 下利用 Homebrew 管理 PHP 版本全流程
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java开发" class="dropdown-title"><span class="title">Java开发</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java开发" class="mobile-dropdown-title"><span class="title">Java开发</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JAVA/一、微服务介绍.html" class="nav-link">
+  微服务架构
+</a></li><li class="dropdown-item"><!----> <a href="/JAVA/二、Spring-Cloud基础入门.html" class="nav-link">
+  Spring Cloud
+</a></li><li class="dropdown-item"><!----> <a href="/JAVA/三、TSF微服务平台介绍.html" class="nav-link">
+  TSF平台
+</a></li><li class="dropdown-item"><!----> <a href="/JAVA/Oracle 基础.html" class="nav-link">
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/JAVA/IDEA开发环境配置.html" class="nav-link">
+  开发工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="效率工具" class="dropdown-title"><span class="title">效率工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="效率工具" class="mobile-dropdown-title"><span class="title">效率工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/efficiency/开发环境搭建-docker.html" class="nav-link">
+  Docker环境
+</a></li><li class="dropdown-item"><!----> <a href="/efficiency/10分钟教你用 Google Cloud Platform 搭建自己的VPN.html" class="nav-link">
+  VPN搭建
+</a></li><li class="dropdown-item"><!----> <a href="/efficiency/用Cursor开启JAVA+AI生涯.html" class="nav-link">
+  AI开发
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="英语学习" class="dropdown-title"><span class="title">英语学习</span> <span class="arrow down"></span></button> <button type="button" aria-label="英语学习" class="mobile-dropdown-title"><span class="title">英语学习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/english/Oxford Phonics World- The Alphabet.html" class="nav-link">
+  自然拼读
+</a></li><li class="dropdown-item"><!----> <a href="/english/parts-of-speech.html" class="nav-link">
+  语法基础
+</a></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于我
+</a></div> <a href="https://github.com/diveultra/diveultra" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>微服务架构系列</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JAVA/一、微服务介绍.html" class="sidebar-link">一、微服务介绍</a></li><li><a href="/JAVA/二、Spring-Cloud基础入门.html" class="sidebar-link">二、Spring Cloud基础入门</a></li><li><a href="/JAVA/三、TSF微服务平台介绍.html" class="sidebar-link">三、TSF微服务平台介绍</a></li><li><a href="/JAVA/四、TSF与Spring-cloud的集成.html" class="sidebar-link">四、TSF与Spring cloud的集成</a></li><li><a href="/JAVA/五、TSF与ServiceMesh的集成.html" class="sidebar-link">五、TSF与ServiceMesh的集成</a></li><li><a href="/JAVA/六、TSF平台管理能力.html" class="sidebar-link">六、TSF平台管理能力</a></li><li><a href="/JAVA/七、使用容器部署微服务.html" class="sidebar-link">七、使用容器部署微服务</a></li><li><a href="/JAVA/八、TSF运维管理.html" class="sidebar-link">八、TSF运维管理</a></li><li><a href="/JAVA/九、TSF服务治理.html" class="sidebar-link">九、TSF服务治理</a></li><li><a href="/JAVA/十、TSF配置管理.html" class="sidebar-link">十、TSF配置管理</a></li><li><a href="/JAVA/十一、TSF与API网关.html" class="sidebar-link">十一、TSF与API网关</a></li><li><a href="/JAVA/十二、TSF分布式事务管理.html" class="sidebar-link">十二、TSF分布式事务管理</a></li><li><a href="/JAVA/十三、微服务设计的原则及价值.html" class="sidebar-link">十三、微服务设计的原则及价值</a></li><li><a href="/JAVA/十四、微服务拆分实战.html" class="sidebar-link">十四、微服务拆分实战</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>数据库技术</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JAVA/Oracle 基础.html" class="sidebar-link">Oracle 基础</a></li><li><a href="/JAVA/ARM架构源码安装MySQL数据库教程.html" class="sidebar-link">ARM架构源码安装MySQL数据库教程</a></li><li><a href="/JAVA/Solr使用DataImport功能上传MySQL数据库数据教程.html" class="sidebar-link">Solr使用DataImport功能上传MySQL数据库数据教程</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>容器化技术</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JAVA/centos7 利用docker安装部署oracle11.html" class="active sidebar-link">centos7 利用docker安装部署oracle11</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/JAVA/macOS M1芯片DockerDeskTop安装CentOS胎教级教程.html" class="sidebar-link">macOS M1芯片DockerDeskTop安装CentOS胎教级教程</a></li><li><a href="/JAVA/macOS M1芯片DockerDeskTop安装Nacos胎教级教程.html" class="sidebar-link">macOS M1芯片DockerDeskTop安装Nacos胎教级教程</a></li><li><a href="/JAVA/macOS-M1芯片centos8容器下JDK的安装.html" class="sidebar-link">macOS M1芯片centos8容器下JDK的安装</a></li><li><a href="/JAVA/macOS-M1芯片centos8容器下Solr的安装教程.html" class="sidebar-link">macOS M1芯片centos8容器下Solr的安装教程(单机版)</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>开发工具与框架</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JAVA/IDEA开发环境配置.html" class="sidebar-link">IDEA开发环境配置</a></li><li><a href="/JAVA/MyBatis-Plus代码生成教程.html" class="sidebar-link">MyBatis-Plus代码生成教程</a></li><li><a href="/JAVA/Springboot实现TLS双向认证.html" class="sidebar-link">Springboot实现TLS双向认证</a></li><li><a href="/JAVA/Webservice.html" class="sidebar-link">Webservice</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>博客与建站</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JAVA/一、 个人建站博客框架Hexo设置优化胎教级教程.html" class="sidebar-link">一、个人建站博客框架Hexo设置优化胎教级教程</a></li><li><a href="/JAVA/二、 将Hexo部署到自己的服务器教程.html" class="sidebar-link">二、将Hexo部署到自己的服务器教程</a></li><li><a href="/JAVA/三、使用腾讯云COS-picGO搭建Hexo博客图床教程.html" class="sidebar-link">三、使用腾讯云COS+PicGO搭建Hexo博客图床教程</a></li><li><a href="/JAVA/构建自己的电子书-基于Gitbook.html" class="sidebar-link">构建自己的电子书-基于GitBook</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>网络与安全</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JAVA/基于frp实现内网穿透.html" class="sidebar-link">基于frp实现内网穿透</a></li><li><a href="/JAVA/基于云服务器搭建IPsec VPN.html" class="sidebar-link">基于云服务器搭建IPsec VPN</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>MacBook使用技巧</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JAVA/玩转MacBook（Mac开发环境搭建和高效工作）.html" class="sidebar-link">玩转MacBook（Mac开发环境搭建和高效工作）</a></li><li><a href="/JAVA/玩转MacBook（Mac效率神器Alfred-Dash）.html" class="sidebar-link">玩转MacBook（Mac效率神器Alfred + Dash）</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><p><strong>书写背景</strong>：电脑是M1芯片的，oracle数据库的镜像没有对应的版本，导致无法使用docker安装oracle数据库。</p> <h3 id="一、环境"><a href="#一、环境" class="header-anchor">#</a> 一、<strong>环境</strong></h3> <h4 id="_1-1-相关信息"><a href="#_1-1-相关信息" class="header-anchor">#</a> 1.1 相关信息</h4> <p><strong>电脑信息</strong>：M1芯片，MacOS  Monterey 12.2.1</p> <p><strong>服务器信息</strong>：腾讯云轻量级服务器</p> <p><strong>系统信息</strong>：CentOS Linux release 7.9.2009 (Core)</p> <p><strong>数据库管理软件：</strong> DBeaver、Navicat</p> <p><strong>Linux命令工具</strong>：Tabby</p> <h3 id="二、docker安装"><a href="#二、docker安装" class="header-anchor">#</a> 二、docker安装</h3> <h4 id="_2-1-安装docker"><a href="#_2-1-安装docker" class="header-anchor">#</a> 2.1 安装docker</h4> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment">#yum包更新到最新</span>
+<span class="token function">sudo</span> yum <span class="token parameter variable">-y</span> update
+
+<span class="token comment">#安装需要的软件包， yum-util 提供yum-config-manager功能，另外两个是devicemapper驱动依赖的</span>
+<span class="token function">sudo</span> yum <span class="token function">install</span> <span class="token parameter variable">-y</span> yum-utils device-mapper-persistent-data lvm2
+
+<span class="token comment">#设置yum源为阿里云</span>
+<span class="token function">sudo</span> yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+
+<span class="token comment">#安装docker  ce：开源版（免费版） ee：企业版（收费版）</span>
+<span class="token function">sudo</span> yum <span class="token parameter variable">-y</span> <span class="token function">install</span> docker-ce
+
+<span class="token comment">#安装完查看docker版本</span>
+<span class="token function">docker</span> <span class="token parameter variable">-v</span>
+</code></pre></div><h4 id="_2-2-设置ustc的镜像"><a href="#_2-2-设置ustc的镜像" class="header-anchor">#</a> 2.2 <strong>设置ustc的镜像</strong></h4> <p>ustc是老牌的linux镜像服务提供者了，还在遥远的ubuntu 5.04版本的时候就在用。ustc的docker镜像加速器速度很快。</p> <p>ustc docker mirror的优势之一就是不需要注册，是真正的公共服务。https://lug.ustc.edu.cn/wiki/mirrors/help/docker</p> <p>![image-20221012150456646](centos7 利用docker安装部署oracle11.assets/image-20221012150456646.png)</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment">#创建文件夹</span>
+<span class="token function">sudo</span> <span class="token function">mkdir</span> <span class="token parameter variable">-p</span> /etc/docker
+
+<span class="token comment">#切换目录</span>
+<span class="token builtin class-name">cd</span> /etc/docker
+
+<span class="token comment">#创建并编辑daemon.json文件</span>
+<span class="token function">vim</span> /etc/docker/daemon.json  
+
+<span class="token comment">#重新加载</span>
+<span class="token function">sudo</span> systemctl daemon-reload
+
+<span class="token comment">#重启docker</span>
+<span class="token function">sudo</span> systemctl restart <span class="token function">docker</span>
+</code></pre></div><p>在daemon.json文件中输入如下内容：</p> <div class="language-json extra-class"><pre class="language-json"><code>
+<span class="token punctuation">{</span>
+<span class="token property">&quot;registry-mirrors&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;https://docker.mirrors.ustc.edu.cn&quot;</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="_2-3-docker的启动与停止"><a href="#_2-3-docker的启动与停止" class="header-anchor">#</a> 2.3 Docker的启动与停止</h4> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment">#详细命令</span>
+<span class="token comment">#启动docker：</span>
+systemctl start <span class="token function">docker</span>
+
+<span class="token comment">#停止docker：</span>
+systemctl stop <span class="token function">docker</span>
+  
+<span class="token comment">#重启docker：</span>
+systemctl restart <span class="token function">docker</span>
+
+<span class="token comment">#查看docker状态：</span>
+systemctl status <span class="token function">docker</span>
+
+<span class="token comment">#开机启动：  </span>
+systemctl <span class="token builtin class-name">enable</span> <span class="token function">docker</span>
+
+<span class="token comment">#检查镜像是否为科大的</span>
+<span class="token function">docker</span> info
+
+<span class="token comment">#查看docker帮助文档</span>
+<span class="token function">docker</span> <span class="token builtin class-name">help</span>
+
+<span class="token comment">#注意：systemctl命令是系统服务管理器指令</span>
+</code></pre></div><p>![image-20221012153220408](centos7 利用docker安装部署oracle11.assets/image-20221012153220408.png)</p> <h3 id="三、docker安装oracle11"><a href="#三、docker安装oracle11" class="header-anchor">#</a> 三、docker安装oracle11</h3> <h4 id="_3-1-安装oracle11"><a href="#_3-1-安装oracle11" class="header-anchor">#</a> 3.1 安装oracle11</h4> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment">#获取阿里oracle镜像</span>
+<span class="token function">docker</span> pull registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g
+
+<span class="token comment">#启动容器</span>
+<span class="token function">docker</span> run <span class="token parameter variable">-d</span> <span class="token parameter variable">-p</span> <span class="token number">1521</span>:1521 <span class="token parameter variable">--name</span> oracle11g <span class="token parameter variable">--restart</span><span class="token operator">=</span>always registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g
+
+<span class="token comment">#查看容器名称和ID</span>
+<span class="token function">docker</span> <span class="token function">ps</span>
+
+<span class="token comment">#进入容器</span>
+<span class="token function">docker</span> <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> oracle11g <span class="token function">bash</span>
+
+<span class="token comment">#切换到root账户（默认进入之后是oracle账户 输入密码：helowin</span>
+<span class="token function">su</span> root
+
+<span class="token comment">#编辑环境变量/etc/profile文件</span>
+<span class="token function">vi</span> /etc/profile
+
+<span class="token comment"># 在/etc/profile文件最后写上下面内容</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">ORACLE_HOME</span><span class="token operator">=</span>/home/oracle/app/oracle/product/11.2.0/dbhome_2
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">ORACLE_SID</span><span class="token operator">=</span>helowin
+<span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token variable">$ORACLE_HOME</span>/bin:<span class="token environment constant">$PATH</span>
+
+<span class="token comment">#加载环境变量</span>
+<span class="token builtin class-name">source</span> /etc/profile 
+
+<span class="token comment">#创建软连接</span>
+ <span class="token function">ln</span> <span class="token parameter variable">-s</span> <span class="token variable">$ORACLE_HOME</span>/bin/sqlplus /usr/bin
+ 
+ <span class="token comment">#oracle用户</span>
+ <span class="token function">su</span> - oracle
+ 
+ <span class="token comment">#登陆</span>
+sqlplus /nolog
+
+<span class="token comment">#登陆</span>
+conn /as sysdba
+
+<span class="token comment">#创建用户sys 是用户，sc0tt321密码  你自己设置</span>
+alter user sys identified by sc0tt321<span class="token punctuation">;</span>
+
+<span class="token comment">#设置密码有效期为无限制</span>
+alter profile default limit PASSWORD_LIFE_TIME UNLIMITED<span class="token punctuation">;</span>
+
+<span class="token comment">#创建用户（可选，根据需要）</span>
+create user mike identified by mima<span class="token punctuation">;</span>
+
+<span class="token comment">#授权</span>
+grant connect,resource,dba to mike<span class="token punctuation">;</span>
+
+
+<span class="token comment">#创建用户（可选，根据需要）</span>
+create user C<span class="token comment">##ZQTIS identified by mima;</span>
+
+<span class="token comment">#授权</span>
+grant connect,resource,dba to C<span class="token comment">##ZQTIS;</span>
+
+<span class="token comment">#查看版本号</span>
+SELECT * from <span class="token function">v</span><span class="token variable">$version</span><span class="token punctuation">;</span>
+
+</code></pre></div><h4 id="_3-2-开放安全端口"><a href="#_3-2-开放安全端口" class="header-anchor">#</a> 3.2 开放安全端口</h4> <p>在服务器的控制台创建新的规则。</p> <p>![image-20221012163553967](centos7 利用docker安装部署oracle11.assets/image-20221012163553967.png)</p> <h4 id="_3-3-使用navicat进行测试"><a href="#_3-3-使用navicat进行测试" class="header-anchor">#</a> 3.3 使用Navicat进行测试</h4> <p>![image-20221012164540697](centos7 利用docker安装部署oracle11.assets/image-20221012164540697.png)</p> <p>问题： 创建C##ZQTIS报错</p> <p>“试图创建一个通用用户，必需要用C##或者c##开头”</p> <p>报错信息：</p> <p>ERROR at line 1:</p> <p>ORA-65094: invalid local user or role name</p> <p>解决方法：</p> <div class="language-shell extra-class"><pre class="language-shell"><code>alter session <span class="token builtin class-name">set</span> <span class="token string">&quot;_ORACLE_SCRIPT&quot;</span><span class="token operator">=</span>true<span class="token punctuation">;</span>
+alter session <span class="token builtin class-name">set</span> <span class="token assign-left variable">container</span><span class="token operator">=</span>PDBORCL<span class="token punctuation">;</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/JAVA/Solr使用DataImport功能上传MySQL数据库数据教程.html" class="prev">
+        Solr使用DataImport功能上传MySQL数据库数据教程
+      </a></span> <span class="next"><a href="/JAVA/macOS M1芯片DockerDeskTop安装CentOS胎教级教程.html">
+        macOS M1芯片DockerDeskTop安装CentOS胎教级教程
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.900574fc.js" defer></script><script src="/assets/js/2.4e96b99c.js" defer></script><script src="/assets/js/1.04576d65.js" defer></script><script src="/assets/js/30.02342cac.js" defer></script>
+  </body>
+</html>

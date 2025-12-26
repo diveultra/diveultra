@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>基于frp实现内网穿透 | WhatsDive</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="description" content="Java架构师 &amp; 潜水教练的技术博客">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <meta name="keywords" content="Java,微服务,Spring Boot,Spring Cloud,TSF,潜水,PADI,技术博客">
+    <meta name="author" content="Eddy">
+    
+    <link rel="preload" href="/assets/css/0.styles.d8d7ec1b.css" as="style"><link rel="preload" href="/assets/js/app.900574fc.js" as="script"><link rel="preload" href="/assets/js/2.4e96b99c.js" as="script"><link rel="preload" href="/assets/js/1.04576d65.js" as="script"><link rel="preload" href="/assets/js/52.adbe5422.js" as="script"><link rel="prefetch" href="/assets/js/10.13c76d22.js"><link rel="prefetch" href="/assets/js/11.b6059df8.js"><link rel="prefetch" href="/assets/js/12.a6c01d98.js"><link rel="prefetch" href="/assets/js/13.2524ae8e.js"><link rel="prefetch" href="/assets/js/14.c98930ca.js"><link rel="prefetch" href="/assets/js/15.e0cfa475.js"><link rel="prefetch" href="/assets/js/16.d8647dbf.js"><link rel="prefetch" href="/assets/js/17.c75d90e9.js"><link rel="prefetch" href="/assets/js/18.bbfac717.js"><link rel="prefetch" href="/assets/js/19.a956e14a.js"><link rel="prefetch" href="/assets/js/20.8dae0a83.js"><link rel="prefetch" href="/assets/js/21.c9ef2b29.js"><link rel="prefetch" href="/assets/js/22.4c2b7f49.js"><link rel="prefetch" href="/assets/js/23.69f3bf7b.js"><link rel="prefetch" href="/assets/js/24.f9ab4061.js"><link rel="prefetch" href="/assets/js/25.aa5592bc.js"><link rel="prefetch" href="/assets/js/26.48091b9f.js"><link rel="prefetch" href="/assets/js/27.9a831b4c.js"><link rel="prefetch" href="/assets/js/28.230254c2.js"><link rel="prefetch" href="/assets/js/29.7f196323.js"><link rel="prefetch" href="/assets/js/3.51b160d8.js"><link rel="prefetch" href="/assets/js/30.02342cac.js"><link rel="prefetch" href="/assets/js/31.6a7ae663.js"><link rel="prefetch" href="/assets/js/32.7057535b.js"><link rel="prefetch" href="/assets/js/33.cbcec342.js"><link rel="prefetch" href="/assets/js/34.6e4207bc.js"><link rel="prefetch" href="/assets/js/35.2a50f93c.js"><link rel="prefetch" href="/assets/js/36.007b962b.js"><link rel="prefetch" href="/assets/js/37.b169417e.js"><link rel="prefetch" href="/assets/js/38.4571d8e1.js"><link rel="prefetch" href="/assets/js/39.8b152e9c.js"><link rel="prefetch" href="/assets/js/4.624bb2a1.js"><link rel="prefetch" href="/assets/js/40.f35945ce.js"><link rel="prefetch" href="/assets/js/41.b7f1920d.js"><link rel="prefetch" href="/assets/js/42.2c581d1b.js"><link rel="prefetch" href="/assets/js/43.71232f68.js"><link rel="prefetch" href="/assets/js/44.650e7ba1.js"><link rel="prefetch" href="/assets/js/45.f8ab0026.js"><link rel="prefetch" href="/assets/js/46.2aafc91a.js"><link rel="prefetch" href="/assets/js/47.a3a60173.js"><link rel="prefetch" href="/assets/js/48.5b3f47a4.js"><link rel="prefetch" href="/assets/js/49.abb9bb27.js"><link rel="prefetch" href="/assets/js/5.d598801e.js"><link rel="prefetch" href="/assets/js/50.2a685cbc.js"><link rel="prefetch" href="/assets/js/51.a12abc28.js"><link rel="prefetch" href="/assets/js/53.ba31add9.js"><link rel="prefetch" href="/assets/js/54.bd5d4c76.js"><link rel="prefetch" href="/assets/js/55.43e8014d.js"><link rel="prefetch" href="/assets/js/56.86df5d7a.js"><link rel="prefetch" href="/assets/js/57.9139c0c6.js"><link rel="prefetch" href="/assets/js/58.362ba749.js"><link rel="prefetch" href="/assets/js/59.a0831951.js"><link rel="prefetch" href="/assets/js/6.7232b5d9.js"><link rel="prefetch" href="/assets/js/60.ebe33e37.js"><link rel="prefetch" href="/assets/js/61.2641dcea.js"><link rel="prefetch" href="/assets/js/62.d0cb2bc1.js"><link rel="prefetch" href="/assets/js/63.1d148233.js"><link rel="prefetch" href="/assets/js/64.a9aa468b.js"><link rel="prefetch" href="/assets/js/65.c5d8d985.js"><link rel="prefetch" href="/assets/js/66.207ba881.js"><link rel="prefetch" href="/assets/js/67.58528c82.js"><link rel="prefetch" href="/assets/js/68.7d0c36eb.js"><link rel="prefetch" href="/assets/js/69.5f2e608b.js"><link rel="prefetch" href="/assets/js/7.6a879071.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.92fa0d62.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.d8d7ec1b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">WhatsDive</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="PHP开发" class="dropdown-title"><span class="title">PHP开发</span> <span class="arrow down"></span></button> <button type="button" aria-label="PHP开发" class="mobile-dropdown-title"><span class="title">PHP开发</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/PHP/macOS 下利用 Homebrew 管理 PHP 版本全流程.html" class="nav-link">
+  macOS 下利用 Homebrew 管理 PHP 版本全流程
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java开发" class="dropdown-title"><span class="title">Java开发</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java开发" class="mobile-dropdown-title"><span class="title">Java开发</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JAVA/一、微服务介绍.html" class="nav-link">
+  微服务架构
+</a></li><li class="dropdown-item"><!----> <a href="/JAVA/二、Spring-Cloud基础入门.html" class="nav-link">
+  Spring Cloud
+</a></li><li class="dropdown-item"><!----> <a href="/JAVA/三、TSF微服务平台介绍.html" class="nav-link">
+  TSF平台
+</a></li><li class="dropdown-item"><!----> <a href="/JAVA/Oracle 基础.html" class="nav-link">
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/JAVA/IDEA开发环境配置.html" class="nav-link">
+  开发工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="效率工具" class="dropdown-title"><span class="title">效率工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="效率工具" class="mobile-dropdown-title"><span class="title">效率工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/efficiency/开发环境搭建-docker.html" class="nav-link">
+  Docker环境
+</a></li><li class="dropdown-item"><!----> <a href="/efficiency/10分钟教你用 Google Cloud Platform 搭建自己的VPN.html" class="nav-link">
+  VPN搭建
+</a></li><li class="dropdown-item"><!----> <a href="/efficiency/用Cursor开启JAVA+AI生涯.html" class="nav-link">
+  AI开发
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="英语学习" class="dropdown-title"><span class="title">英语学习</span> <span class="arrow down"></span></button> <button type="button" aria-label="英语学习" class="mobile-dropdown-title"><span class="title">英语学习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/english/Oxford Phonics World- The Alphabet.html" class="nav-link">
+  自然拼读
+</a></li><li class="dropdown-item"><!----> <a href="/english/parts-of-speech.html" class="nav-link">
+  语法基础
+</a></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于我
+</a></div> <a href="https://github.com/diveultra/diveultra" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="PHP开发" class="dropdown-title"><span class="title">PHP开发</span> <span class="arrow down"></span></button> <button type="button" aria-label="PHP开发" class="mobile-dropdown-title"><span class="title">PHP开发</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/PHP/macOS 下利用 Homebrew 管理 PHP 版本全流程.html" class="nav-link">
+  macOS 下利用 Homebrew 管理 PHP 版本全流程
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java开发" class="dropdown-title"><span class="title">Java开发</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java开发" class="mobile-dropdown-title"><span class="title">Java开发</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JAVA/一、微服务介绍.html" class="nav-link">
+  微服务架构
+</a></li><li class="dropdown-item"><!----> <a href="/JAVA/二、Spring-Cloud基础入门.html" class="nav-link">
+  Spring Cloud
+</a></li><li class="dropdown-item"><!----> <a href="/JAVA/三、TSF微服务平台介绍.html" class="nav-link">
+  TSF平台
+</a></li><li class="dropdown-item"><!----> <a href="/JAVA/Oracle 基础.html" class="nav-link">
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/JAVA/IDEA开发环境配置.html" class="nav-link">
+  开发工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="效率工具" class="dropdown-title"><span class="title">效率工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="效率工具" class="mobile-dropdown-title"><span class="title">效率工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/efficiency/开发环境搭建-docker.html" class="nav-link">
+  Docker环境
+</a></li><li class="dropdown-item"><!----> <a href="/efficiency/10分钟教你用 Google Cloud Platform 搭建自己的VPN.html" class="nav-link">
+  VPN搭建
+</a></li><li class="dropdown-item"><!----> <a href="/efficiency/用Cursor开启JAVA+AI生涯.html" class="nav-link">
+  AI开发
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="英语学习" class="dropdown-title"><span class="title">英语学习</span> <span class="arrow down"></span></button> <button type="button" aria-label="英语学习" class="mobile-dropdown-title"><span class="title">英语学习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/english/Oxford Phonics World- The Alphabet.html" class="nav-link">
+  自然拼读
+</a></li><li class="dropdown-item"><!----> <a href="/english/parts-of-speech.html" class="nav-link">
+  语法基础
+</a></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于我
+</a></div> <a href="https://github.com/diveultra/diveultra" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>微服务架构系列</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JAVA/一、微服务介绍.html" class="sidebar-link">一、微服务介绍</a></li><li><a href="/JAVA/二、Spring-Cloud基础入门.html" class="sidebar-link">二、Spring Cloud基础入门</a></li><li><a href="/JAVA/三、TSF微服务平台介绍.html" class="sidebar-link">三、TSF微服务平台介绍</a></li><li><a href="/JAVA/四、TSF与Spring-cloud的集成.html" class="sidebar-link">四、TSF与Spring cloud的集成</a></li><li><a href="/JAVA/五、TSF与ServiceMesh的集成.html" class="sidebar-link">五、TSF与ServiceMesh的集成</a></li><li><a href="/JAVA/六、TSF平台管理能力.html" class="sidebar-link">六、TSF平台管理能力</a></li><li><a href="/JAVA/七、使用容器部署微服务.html" class="sidebar-link">七、使用容器部署微服务</a></li><li><a href="/JAVA/八、TSF运维管理.html" class="sidebar-link">八、TSF运维管理</a></li><li><a href="/JAVA/九、TSF服务治理.html" class="sidebar-link">九、TSF服务治理</a></li><li><a href="/JAVA/十、TSF配置管理.html" class="sidebar-link">十、TSF配置管理</a></li><li><a href="/JAVA/十一、TSF与API网关.html" class="sidebar-link">十一、TSF与API网关</a></li><li><a href="/JAVA/十二、TSF分布式事务管理.html" class="sidebar-link">十二、TSF分布式事务管理</a></li><li><a href="/JAVA/十三、微服务设计的原则及价值.html" class="sidebar-link">十三、微服务设计的原则及价值</a></li><li><a href="/JAVA/十四、微服务拆分实战.html" class="sidebar-link">十四、微服务拆分实战</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>数据库技术</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JAVA/Oracle 基础.html" class="sidebar-link">Oracle 基础</a></li><li><a href="/JAVA/ARM架构源码安装MySQL数据库教程.html" class="sidebar-link">ARM架构源码安装MySQL数据库教程</a></li><li><a href="/JAVA/Solr使用DataImport功能上传MySQL数据库数据教程.html" class="sidebar-link">Solr使用DataImport功能上传MySQL数据库数据教程</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>容器化技术</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JAVA/centos7 利用docker安装部署oracle11.html" class="sidebar-link">centos7 利用docker安装部署oracle11</a></li><li><a href="/JAVA/macOS M1芯片DockerDeskTop安装CentOS胎教级教程.html" class="sidebar-link">macOS M1芯片DockerDeskTop安装CentOS胎教级教程</a></li><li><a href="/JAVA/macOS M1芯片DockerDeskTop安装Nacos胎教级教程.html" class="sidebar-link">macOS M1芯片DockerDeskTop安装Nacos胎教级教程</a></li><li><a href="/JAVA/macOS-M1芯片centos8容器下JDK的安装.html" class="sidebar-link">macOS M1芯片centos8容器下JDK的安装</a></li><li><a href="/JAVA/macOS-M1芯片centos8容器下Solr的安装教程.html" class="sidebar-link">macOS M1芯片centos8容器下Solr的安装教程(单机版)</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>开发工具与框架</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JAVA/IDEA开发环境配置.html" class="sidebar-link">IDEA开发环境配置</a></li><li><a href="/JAVA/MyBatis-Plus代码生成教程.html" class="sidebar-link">MyBatis-Plus代码生成教程</a></li><li><a href="/JAVA/Springboot实现TLS双向认证.html" class="sidebar-link">Springboot实现TLS双向认证</a></li><li><a href="/JAVA/Webservice.html" class="sidebar-link">Webservice</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>博客与建站</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JAVA/一、 个人建站博客框架Hexo设置优化胎教级教程.html" class="sidebar-link">一、个人建站博客框架Hexo设置优化胎教级教程</a></li><li><a href="/JAVA/二、 将Hexo部署到自己的服务器教程.html" class="sidebar-link">二、将Hexo部署到自己的服务器教程</a></li><li><a href="/JAVA/三、使用腾讯云COS-picGO搭建Hexo博客图床教程.html" class="sidebar-link">三、使用腾讯云COS+PicGO搭建Hexo博客图床教程</a></li><li><a href="/JAVA/构建自己的电子书-基于Gitbook.html" class="sidebar-link">构建自己的电子书-基于GitBook</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>网络与安全</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JAVA/基于frp实现内网穿透.html" class="active sidebar-link">基于frp实现内网穿透</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/JAVA/基于云服务器搭建IPsec VPN.html" class="sidebar-link">基于云服务器搭建IPsec VPN</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>MacBook使用技巧</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JAVA/玩转MacBook（Mac开发环境搭建和高效工作）.html" class="sidebar-link">玩转MacBook（Mac开发环境搭建和高效工作）</a></li><li><a href="/JAVA/玩转MacBook（Mac效率神器Alfred-Dash）.html" class="sidebar-link">玩转MacBook（Mac效率神器Alfred + Dash）</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h3 id="一、frp概览"><a href="#一、frp概览" class="header-anchor">#</a> 一、frp概览</h3> <h4 id="_1-1-frp-是什么"><a href="#_1-1-frp-是什么" class="header-anchor">#</a> 1.1 frp 是什么？</h4> <p>​    frp 是一个专注于内网穿透的高性能的反向代理应用，支持 TCP、UDP、HTTP、HTTPS 等多种协议。可以将内网服务以安全、便捷的方式通过具有公网 IP 节点的中转暴露到公网。（<font color="#FF0000">理论上限网速取决你公网服务器的带宽，这点非常nice哦，比那些白嫖的龟速内网穿透服务好得多</font>）</p> <h4 id="_1-2-为什么使用-frp"><a href="#_1-2-为什么使用-frp" class="header-anchor">#</a> 1.2 为什么使用 frp？</h4> <p>通过在具有公网 IP 的节点上部署 frp 服务端，可以轻松地将内网服务穿透到公网，同时提供诸多专业的功能特性，这包括：</p> <ul><li>客户端服务端通信支持 TCP、KCP 以及 Websocket 等多种协议。</li> <li>采用 TCP 连接流式复用，在单个连接间承载更多请求，节省连接建立时间。</li> <li>代理组间的负载均衡。</li> <li>端口复用，多个服务通过同一个服务端端口暴露。</li> <li>多个原生支持的客户端插件（静态文件查看，HTTP、SOCK5 代理等），便于独立使用 frp 客户端完成某些工作。</li> <li>高度扩展性的服务端插件系统，方便结合自身需求进行功能扩展。</li> <li>服务端和客户端 UI 页面。。</li></ul> <p>FRP项目官网是 https://github.com/fatedier/frp</p> <h4 id="_1-3-frp工作原理"><a href="#_1-3-frp工作原理" class="header-anchor">#</a> 1.3 frp工作原理</h4> <ul><li>服务端运行，监听一个主端口，等待客户端的连接；</li> <li>客户端连接到服务端的主端口，同时告诉服务端要监听的端口和转发类型；</li> <li>服务端fork新的进程监听客户端指定的端口；</li> <li>外网用户连接到客户端指定的端口，服务端通过和客户端的连接将数据转发到客户端；</li> <li>客户端进程再将数据转发到本地服务，从而实现内网对外暴露服务的能力。</li></ul> <h3 id="二、frp安装与配置"><a href="#二、frp安装与配置" class="header-anchor">#</a> 二、frp安装与配置</h3> <p>想要配置frp穿透，首先必须先要有一台具有外网ip(即：可以外网访问)的服务器。如果没有，接下来的教程就不用看了。</p> <p>配置教程主要分为两个部分。
+一是服务器端(外网服务器)配置；
+二是客户端([内网服务器)配置。</p> <h4 id="_2-1-服务端配置"><a href="#_2-1-服务端配置" class="header-anchor">#</a> 2.1 服务端配置</h4> <h5 id="_2-1-1-下载frp-linux版"><a href="#_2-1-1-下载frp-linux版" class="header-anchor">#</a> 2.1.1 下载frp（linux版）</h5> <p>目前可以在 Github 的 <a href="https://github.com/fatedier/frp/releases" target="_blank" rel="noopener noreferrer">Release<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 页面中下载到最新版本的客户端和服务端二进制文件，所有文件被打包在一个压缩包中。</p> <p>也可以在服务器使用wget下载，我这边是liunx服务器为例。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment">#切换目录</span>
+<span class="token builtin class-name">cd</span> /usr/local/
+
+<span class="token comment">#wget下载frp</span>
+<span class="token function">wget</span> https://github.com/fatedier/frp/releases/download/v0.45.0/frp_0.45.0_linux_amd64.tar.gz
+
+<span class="token comment">#解压到当前工作目录</span>
+<span class="token function">tar</span> <span class="token parameter variable">-zxvf</span> frp_0.45.0_linux_amd64.tar.gz
+
+<span class="token comment">#切换到解压后的目录</span>
+<span class="token builtin class-name">cd</span> frp_0.45.0_linux_amd64
+
+<span class="token comment">#修改服务端的配置文件frps.ini</span>
+<span class="token function">vim</span> frps.ini
+</code></pre></div><p>frps.ini详细内容如下：</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">common</span><span class="token punctuation">]</span></span>
+<span class="token comment"># frp监听的端口，默认是7000，可以改成其他的</span>
+<span class="token key attr-name">bind_port</span> <span class="token punctuation">=</span> <span class="token value attr-value">7000</span>
+<span class="token comment"># 授权码，请改成更复杂的,这个token之后在客户端会用到</span>
+<span class="token key attr-name">token</span> <span class="token punctuation">=</span> <span class="token value attr-value">52010</span> 
+
+<span class="token comment"># frp管理后台端口，请按自己需求更改</span>
+<span class="token key attr-name">dashboard_port</span> <span class="token punctuation">=</span> <span class="token value attr-value">7500</span>
+<span class="token comment"># frp管理后台用户名和密码，请改成自己的</span>
+<span class="token key attr-name">dashboard_user</span> <span class="token punctuation">=</span> <span class="token value attr-value">admin</span>
+<span class="token key attr-name">dashboard_pwd</span> <span class="token punctuation">=</span> <span class="token value attr-value">admin</span>
+<span class="token key attr-name">enable_prometheus</span> <span class="token punctuation">=</span> <span class="token value attr-value">true</span>
+
+<span class="token comment"># frp日志配置</span>
+<span class="token key attr-name">log_file</span> <span class="token punctuation">=</span> <span class="token value attr-value">/var/log/frps.log</span>
+<span class="token key attr-name">log_level</span> <span class="token punctuation">=</span> <span class="token value attr-value">info</span>
+<span class="token key attr-name">log_max_days</span> <span class="token punctuation">=</span> <span class="token value attr-value">3</span>
+</code></pre></div><h5 id="_2-1-2-使用-systemd-启动frp服务"><a href="#_2-1-2-使用-systemd-启动frp服务" class="header-anchor">#</a> 2.1.2 使用 systemd 启动frp服务</h5> <p>Linux 系统下，使用<code>systemd</code> 可以方便地控制 frp 服务端 <code>frps</code> 的启动和停止、配置后台运行和开启自启。</p> <p>要使用 <code>systemd</code> 来控制 <code>frps</code>，需要先安装 <code>systemd</code>，然后在 <code>/etc/systemd/system</code> 目录下创建一个 frps.service 文件。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment">#如Linux服务端上没有安装 systemd，可以使用 yum 或 apt 等命令安装 systemd</span>
+<span class="token comment"># yum</span>
+yum <span class="token parameter variable">-y</span> <span class="token function">install</span> systemd
+<span class="token comment"># apt</span>
+<span class="token function">apt</span> <span class="token parameter variable">-y</span> <span class="token function">install</span> systemd
+
+<span class="token comment">#创建并编辑 frps.service 文件</span>
+<span class="token function">vim</span> /etc/systemd/system/frps.service
+
+<span class="token comment">#配置 frps 开机自启</span>
+systemctl <span class="token builtin class-name">enable</span> frps
+
+<span class="token comment">#启动frp</span>
+systemctl start frps
+
+<span class="token comment">#查看状态</span>
+systemctl status frps
+</code></pre></div><p>frps.service内容如下：</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">Unit</span><span class="token punctuation">]</span></span>
+<span class="token comment"># 服务名称，可自定义</span>
+<span class="token key attr-name">Description</span> <span class="token punctuation">=</span> <span class="token value attr-value">frp server</span>
+<span class="token key attr-name">After</span> <span class="token punctuation">=</span> <span class="token value attr-value">network.target syslog.target</span>
+<span class="token key attr-name">Wants</span> <span class="token punctuation">=</span> <span class="token value attr-value">network.target</span>
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">Service</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">Type</span> <span class="token punctuation">=</span> <span class="token value attr-value">simple</span>
+<span class="token comment"># 启动frps的命令，需修改为您的frps的安装路径</span>
+<span class="token key attr-name">ExecStart</span> <span class="token punctuation">=</span> <span class="token value attr-value">/usr/local/frp_0.45.0_linux_amd64/frps -c /usr/local/frp_0.45.0_linux_amd64/frps.ini</span>
+
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">Install</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">WantedBy</span> <span class="token punctuation">=</span> <span class="token value attr-value">multi-user.target</span>
+</code></pre></div><p>查看状态如下图所示，则说明启动成功。</p> <p><img src="%E5%9F%BA%E4%BA%8E.assets/image-20221115182433396.png" alt="image-20221115182433396"></p> <h5 id="_2-1-3-防火墙开放端口"><a href="#_2-1-3-防火墙开放端口" class="header-anchor">#</a> 2.1.3 防火墙开放端口</h5> <p>云服务可以直接到安全组进行设置</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 添加监听端口</span>
+firewall-cmd <span class="token parameter variable">--permanent</span> --add-port<span class="token operator">=</span><span class="token number">7000</span>/tcp
+<span class="token comment"># 添加管理后台端口</span>
+firewall-cmd <span class="token parameter variable">--permanent</span> --add-port<span class="token operator">=</span><span class="token number">7500</span>/tcp
+firewall-cmd <span class="token parameter variable">--reload</span>
+
+<span class="token comment">#查看所有开启的端口号</span>
+<span class="token function">netstat</span> <span class="token parameter variable">-aptn</span>
+
+<span class="token comment">#查看7000端口使用情况</span>
+<span class="token function">netstat</span> <span class="token parameter variable">-ntulp</span> <span class="token operator">|</span><span class="token function">grep</span> <span class="token number">7000</span>
+
+<span class="token comment">#如果没有任何输出则说明没有开启该端口号</span>
+<span class="token function">lsof</span> <span class="token parameter variable">-i:7000</span>
+
+<span class="token comment">#检查端口是否可用</span>
+telnet <span class="token number">127.0</span>.0.1 <span class="token number">7000</span>
+</code></pre></div><h5 id="_2-1-4-frp其它命令"><a href="#_2-1-4-frp其它命令" class="header-anchor">#</a> 2.1.4 frp其它命令</h5> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 停止frp</span>
+systemctl stop frps
+
+<span class="token comment"># 重启frp</span>
+systemctl restart frps
+
+<span class="token comment"># 查看frp状态</span>
+systemctl status frps
+</code></pre></div><h5 id="_2-1-5-验证服务端是否启动成功"><a href="#_2-1-5-验证服务端是否启动成功" class="header-anchor">#</a> 2.1.5 验证服务端是否启动成功</h5> <p>访问：<strong>http://服务器IP:后台管理端口</strong> ，输入用户名和密码可以查看连接状态
+用户名和密码分别对应frps.ini文件中的dashboard_user和dashboard_pwd</p> <p>登录之后界面如下：
+<img src="%E5%9F%BA%E4%BA%8Efrp%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F.assets/image-20221115183807622.png" alt="image-20221115183807622"></p> <p>如果上述步骤没有问题，则说明frp的服务端配置成功。</p> <h4 id="_2-2-客户端配置"><a href="#_2-2-客户端配置" class="header-anchor">#</a> 2.2 客户端配置</h4> <h5 id="_2-2-1-下载frp-mac版"><a href="#_2-2-1-下载frp-mac版" class="header-anchor">#</a> 2.2.1 下载frp（MAC版）</h5> <p>目前可以在 Github 的 <a href="https://github.com/fatedier/frp/releases" target="_blank" rel="noopener noreferrer">Release<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 页面中下载到最新版本的客户端和服务端二进制文件，所有文件被打包在一个压缩包中。</p> <p>也可以在服务器使用wget下载，我这边是M1芯片的MAC为例。其它的版本按照自己的机器来选择版本。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment">#创建目录用来储存frp</span>
+<span class="token function">mkdir</span> <span class="token parameter variable">-p</span> /Users/mike/Documents/frp
+
+<span class="token comment">#切换目录</span>
+<span class="token builtin class-name">cd</span> /Users/mike/Documents/frp
+
+<span class="token comment">#下载frp（本次演示的是M1芯片，其它的安装自己的机器来选择版本）</span>
+<span class="token function">wget</span> https://github.com/fatedier/frp/releases/download/v0.45.0/frp_0.45.0_darwin_arm64.tar.gz
+
+<span class="token comment">#解压</span>
+<span class="token function">tar</span> <span class="token parameter variable">-zxvf</span> frp_0.45.0_darwin_arm64.tar.gz
+
+<span class="token comment">#切换目录</span>
+<span class="token builtin class-name">cd</span> frp_0.45.0_darwin_arm64
+
+<span class="token comment">#修改客服端的配置文件frpc.ini</span>
+<span class="token function">vim</span> frpc.ini
+</code></pre></div><p>frpc.ini文件详细内容如下</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token comment"># 客户端配置</span>
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">common</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">server_addr</span> <span class="token punctuation">=</span> <span class="token value attr-value">服务端的服务器ip</span>
+<span class="token comment"># 与frps.ini的bind_port一致</span>
+<span class="token key attr-name">server_port</span> <span class="token punctuation">=</span> <span class="token value attr-value">7000</span>
+<span class="token comment"># 与frps.ini的token一致</span>
+<span class="token key attr-name">token</span> <span class="token punctuation">=</span> <span class="token value attr-value">52010</span>
+
+<span class="token comment"># 配置ssh服务</span>
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">ssh</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">type</span> <span class="token punctuation">=</span> <span class="token value attr-value">tcp</span>
+<span class="token key attr-name">local_ip</span> <span class="token punctuation">=</span> <span class="token value attr-value">127.0.0.1</span>
+<span class="token key attr-name">local_port</span> <span class="token punctuation">=</span> <span class="token value attr-value">22</span>
+<span class="token comment"># 这个自定义，之后再ssh连接的时候要用</span>
+<span class="token key attr-name">remote_port</span> <span class="token punctuation">=</span> <span class="token value attr-value">6000</span> 
+
+<span class="token comment">#配置本地服务，用于远程调试</span>
+<span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">tcp_port</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">type</span> <span class="token punctuation">=</span> <span class="token value attr-value">tcp</span>
+<span class="token key attr-name">local_ip</span> <span class="token punctuation">=</span> <span class="token value attr-value">127.0.0.1</span>
+<span class="token key attr-name">local_port</span> <span class="token punctuation">=</span> <span class="token value attr-value">8080</span>
+<span class="token key attr-name">remote_port</span> <span class="token punctuation">=</span> <span class="token value attr-value">8080</span>
+</code></pre></div><ul><li>注意：[ssh]这样的名称必须全局唯一，即就算有多个客户端，也只能使用一次，其他的可以用[ssh2]、[ssh3]等；</li> <li>意思就是说，如果你要配置多个客户端，必须将另外的客户端的[ssh]改为[ssh2]、[ssh3]等，并且remote_port也要变，比如6002，6003等</li></ul> <h5 id="_2-2-2-防火墙开放端口"><a href="#_2-2-2-防火墙开放端口" class="header-anchor">#</a> 2.2.2 防火墙开放端口</h5> <p>你如果觉得mac放行端口麻烦，可以直接将防火墙关闭</p> <h5 id="_2-2-3-客户端启动"><a href="#_2-2-3-客户端启动" class="header-anchor">#</a> 2.2.3 客户端启动</h5> <p>通过IP加端口访问服务</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment">#切换到安装目录</span>
+<span class="token builtin class-name">cd</span> /Users/mike/Documents/frp/frp_0.45.0_darwin_arm64
+
+<span class="token comment">#在当前命令执行可执行文件frpc，并指定配置文件。</span>
+./frpc <span class="token parameter variable">-c</span> frpc.ini
+
+<span class="token comment">#后台运行</span>
+<span class="token function">nohup</span> ./frpc <span class="token parameter variable">-c</span> frpc.ini <span class="token operator">&gt;</span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span><span class="token file-descriptor important">&amp;1</span> <span class="token operator">&amp;</span>
+</code></pre></div><p>到这里，恭喜你，你基本成功了，但还剩最后一步，很多人会弄错。</p> <p><img src="%E5%9F%BA%E4%BA%8Efrp%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F.assets/image-20221115192427194.png" alt="image-20221115192427194"></p> <h5 id="_2-2-4-设置通过域名访问"><a href="#_2-2-4-设置通过域名访问" class="header-anchor">#</a> 2.2.4 设置通过域名访问</h5> <p>上面的例子演示了如何通过IP加端口访问服务，下面介绍一下如何通过域名访问服务。</p> <ul><li><p>第一步：访问你的域名DNS管理界面，添加一个子域名</p> <ul><li><p>点 <strong>[ 新增一条A记录 ]</strong></p></li> <li><p>主机记录填: frp （即frp.example.com）</p></li> <li><p>记录值填写服务器IP (服务端的机器IP)</p></li> <li><p>保存退出</p></li></ul></li> <li><p>第二步：在公网服务器上设置</p> <ul><li>编辑：frps.ini (找到common一栏，添加一行)</li></ul> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">common</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">vhost_http_port</span> <span class="token punctuation">=</span> <span class="token value attr-value">8000</span>
+</code></pre></div><ul><li>存盘退出, 并重启服务端。</li></ul></li> <li><p>第三步：在客户端机器上设置
+编辑：frpc.ini （添加web栏，内容如下）</p> <div class="language-ini extra-class"><pre class="language-ini"><code><span class="token section"><span class="token punctuation">[</span><span class="token section-name selector">web</span><span class="token punctuation">]</span></span>
+<span class="token key attr-name">type</span> <span class="token punctuation">=</span> <span class="token value attr-value">http</span>
+<span class="token key attr-name">local_port</span> <span class="token punctuation">=</span> <span class="token value attr-value">8080</span>
+<span class="token key attr-name">custom_domains</span> <span class="token punctuation">=</span> <span class="token value attr-value">frp.example.com</span>
+</code></pre></div><ul><li>存盘退出，并重启客服端。</li></ul></li></ul> <h5 id="_2-2-5-测试穿透是否配置成功"><a href="#_2-2-5-测试穿透是否配置成功" class="header-anchor">#</a> 2.2.5 测试穿透是否配置成功</h5> <p>找另外一台不同网段的linux或者mac电脑，在终端执行</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment">#查看frpc进程</span>
+<span class="token function">ps</span> <span class="token parameter variable">-ef</span> <span class="token operator">|</span> <span class="token function">grep</span> frpc
+
+<span class="token comment">#测试ssh</span>
+<span class="token function">ssh</span> 用户名@服务端ip  <span class="token parameter variable">-p</span> 端口号
+
+<span class="token comment">#测试通过IP加端口访问服务</span>
+<span class="token function">curl</span>  服务端ip:8080/自己的web服务访问路径
+
+<span class="token comment">#测试通过域名加端口访问服务</span>
+<span class="token function">curl</span>  frp.example.com:8080/自己的web服务访问路径
+</code></pre></div><p>访问：<strong>http://服务器IP:后台管理端口</strong> ，输入用户名和密码可以查看连接状态，发现Proxies下的TCP多了两条记录，<img src="%E5%9F%BA%E4%BA%8Efrp%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F.assets/image-20221116102040309.png" alt="image-20221116102040309"></p> <p>http多了一条记录。</p> <p><img src="%E5%9F%BA%E4%BA%8Efrp%E5%AE%9E%E7%8E%B0%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F.assets/image-20221116104457980.png" alt="image-20221116104457980"></p> <p>更详细的操作，请参考<a href="https://gofrp.org/docs/" target="_blank" rel="noopener noreferrer">frp官方文档<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/JAVA/构建自己的电子书-基于Gitbook.html" class="prev">
+        构建自己的电子书-基于GitBook
+      </a></span> <span class="next"><a href="/JAVA/基于云服务器搭建IPsec VPN.html">
+        基于云服务器搭建IPsec VPN
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.900574fc.js" defer></script><script src="/assets/js/2.4e96b99c.js" defer></script><script src="/assets/js/1.04576d65.js" defer></script><script src="/assets/js/52.adbe5422.js" defer></script>
+  </body>
+</html>

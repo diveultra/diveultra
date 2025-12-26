@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>开发效率提升之工具篇 | WhatsDive</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="description" content="Java架构师 &amp; 潜水教练的技术博客">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <meta name="keywords" content="Java,微服务,Spring Boot,Spring Cloud,TSF,潜水,PADI,技术博客">
+    <meta name="author" content="Eddy">
+    
+    <link rel="preload" href="/assets/css/0.styles.d8d7ec1b.css" as="style"><link rel="preload" href="/assets/js/app.900574fc.js" as="script"><link rel="preload" href="/assets/js/2.4e96b99c.js" as="script"><link rel="preload" href="/assets/js/1.04576d65.js" as="script"><link rel="preload" href="/assets/js/61.2641dcea.js" as="script"><link rel="prefetch" href="/assets/js/10.13c76d22.js"><link rel="prefetch" href="/assets/js/11.b6059df8.js"><link rel="prefetch" href="/assets/js/12.a6c01d98.js"><link rel="prefetch" href="/assets/js/13.2524ae8e.js"><link rel="prefetch" href="/assets/js/14.c98930ca.js"><link rel="prefetch" href="/assets/js/15.e0cfa475.js"><link rel="prefetch" href="/assets/js/16.d8647dbf.js"><link rel="prefetch" href="/assets/js/17.c75d90e9.js"><link rel="prefetch" href="/assets/js/18.bbfac717.js"><link rel="prefetch" href="/assets/js/19.a956e14a.js"><link rel="prefetch" href="/assets/js/20.8dae0a83.js"><link rel="prefetch" href="/assets/js/21.c9ef2b29.js"><link rel="prefetch" href="/assets/js/22.4c2b7f49.js"><link rel="prefetch" href="/assets/js/23.69f3bf7b.js"><link rel="prefetch" href="/assets/js/24.f9ab4061.js"><link rel="prefetch" href="/assets/js/25.aa5592bc.js"><link rel="prefetch" href="/assets/js/26.48091b9f.js"><link rel="prefetch" href="/assets/js/27.9a831b4c.js"><link rel="prefetch" href="/assets/js/28.230254c2.js"><link rel="prefetch" href="/assets/js/29.7f196323.js"><link rel="prefetch" href="/assets/js/3.51b160d8.js"><link rel="prefetch" href="/assets/js/30.02342cac.js"><link rel="prefetch" href="/assets/js/31.6a7ae663.js"><link rel="prefetch" href="/assets/js/32.7057535b.js"><link rel="prefetch" href="/assets/js/33.cbcec342.js"><link rel="prefetch" href="/assets/js/34.6e4207bc.js"><link rel="prefetch" href="/assets/js/35.2a50f93c.js"><link rel="prefetch" href="/assets/js/36.007b962b.js"><link rel="prefetch" href="/assets/js/37.b169417e.js"><link rel="prefetch" href="/assets/js/38.4571d8e1.js"><link rel="prefetch" href="/assets/js/39.8b152e9c.js"><link rel="prefetch" href="/assets/js/4.624bb2a1.js"><link rel="prefetch" href="/assets/js/40.f35945ce.js"><link rel="prefetch" href="/assets/js/41.b7f1920d.js"><link rel="prefetch" href="/assets/js/42.2c581d1b.js"><link rel="prefetch" href="/assets/js/43.71232f68.js"><link rel="prefetch" href="/assets/js/44.650e7ba1.js"><link rel="prefetch" href="/assets/js/45.f8ab0026.js"><link rel="prefetch" href="/assets/js/46.2aafc91a.js"><link rel="prefetch" href="/assets/js/47.a3a60173.js"><link rel="prefetch" href="/assets/js/48.5b3f47a4.js"><link rel="prefetch" href="/assets/js/49.abb9bb27.js"><link rel="prefetch" href="/assets/js/5.d598801e.js"><link rel="prefetch" href="/assets/js/50.2a685cbc.js"><link rel="prefetch" href="/assets/js/51.a12abc28.js"><link rel="prefetch" href="/assets/js/52.adbe5422.js"><link rel="prefetch" href="/assets/js/53.ba31add9.js"><link rel="prefetch" href="/assets/js/54.bd5d4c76.js"><link rel="prefetch" href="/assets/js/55.43e8014d.js"><link rel="prefetch" href="/assets/js/56.86df5d7a.js"><link rel="prefetch" href="/assets/js/57.9139c0c6.js"><link rel="prefetch" href="/assets/js/58.362ba749.js"><link rel="prefetch" href="/assets/js/59.a0831951.js"><link rel="prefetch" href="/assets/js/6.7232b5d9.js"><link rel="prefetch" href="/assets/js/60.ebe33e37.js"><link rel="prefetch" href="/assets/js/62.d0cb2bc1.js"><link rel="prefetch" href="/assets/js/63.1d148233.js"><link rel="prefetch" href="/assets/js/64.a9aa468b.js"><link rel="prefetch" href="/assets/js/65.c5d8d985.js"><link rel="prefetch" href="/assets/js/66.207ba881.js"><link rel="prefetch" href="/assets/js/67.58528c82.js"><link rel="prefetch" href="/assets/js/68.7d0c36eb.js"><link rel="prefetch" href="/assets/js/69.5f2e608b.js"><link rel="prefetch" href="/assets/js/7.6a879071.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.92fa0d62.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.d8d7ec1b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">WhatsDive</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="PHP开发" class="dropdown-title"><span class="title">PHP开发</span> <span class="arrow down"></span></button> <button type="button" aria-label="PHP开发" class="mobile-dropdown-title"><span class="title">PHP开发</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/PHP/macOS 下利用 Homebrew 管理 PHP 版本全流程.html" class="nav-link">
+  macOS 下利用 Homebrew 管理 PHP 版本全流程
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java开发" class="dropdown-title"><span class="title">Java开发</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java开发" class="mobile-dropdown-title"><span class="title">Java开发</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JAVA/一、微服务介绍.html" class="nav-link">
+  微服务架构
+</a></li><li class="dropdown-item"><!----> <a href="/JAVA/二、Spring-Cloud基础入门.html" class="nav-link">
+  Spring Cloud
+</a></li><li class="dropdown-item"><!----> <a href="/JAVA/三、TSF微服务平台介绍.html" class="nav-link">
+  TSF平台
+</a></li><li class="dropdown-item"><!----> <a href="/JAVA/Oracle 基础.html" class="nav-link">
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/JAVA/IDEA开发环境配置.html" class="nav-link">
+  开发工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="效率工具" class="dropdown-title"><span class="title">效率工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="效率工具" class="mobile-dropdown-title"><span class="title">效率工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/efficiency/开发环境搭建-docker.html" class="nav-link">
+  Docker环境
+</a></li><li class="dropdown-item"><!----> <a href="/efficiency/10分钟教你用 Google Cloud Platform 搭建自己的VPN.html" class="nav-link">
+  VPN搭建
+</a></li><li class="dropdown-item"><!----> <a href="/efficiency/用Cursor开启JAVA+AI生涯.html" class="nav-link">
+  AI开发
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="英语学习" class="dropdown-title"><span class="title">英语学习</span> <span class="arrow down"></span></button> <button type="button" aria-label="英语学习" class="mobile-dropdown-title"><span class="title">英语学习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/english/Oxford Phonics World- The Alphabet.html" class="nav-link">
+  自然拼读
+</a></li><li class="dropdown-item"><!----> <a href="/english/parts-of-speech.html" class="nav-link">
+  语法基础
+</a></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于我
+</a></div> <a href="https://github.com/diveultra/diveultra" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="PHP开发" class="dropdown-title"><span class="title">PHP开发</span> <span class="arrow down"></span></button> <button type="button" aria-label="PHP开发" class="mobile-dropdown-title"><span class="title">PHP开发</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/PHP/macOS 下利用 Homebrew 管理 PHP 版本全流程.html" class="nav-link">
+  macOS 下利用 Homebrew 管理 PHP 版本全流程
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java开发" class="dropdown-title"><span class="title">Java开发</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java开发" class="mobile-dropdown-title"><span class="title">Java开发</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JAVA/一、微服务介绍.html" class="nav-link">
+  微服务架构
+</a></li><li class="dropdown-item"><!----> <a href="/JAVA/二、Spring-Cloud基础入门.html" class="nav-link">
+  Spring Cloud
+</a></li><li class="dropdown-item"><!----> <a href="/JAVA/三、TSF微服务平台介绍.html" class="nav-link">
+  TSF平台
+</a></li><li class="dropdown-item"><!----> <a href="/JAVA/Oracle 基础.html" class="nav-link">
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/JAVA/IDEA开发环境配置.html" class="nav-link">
+  开发工具
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="效率工具" class="dropdown-title"><span class="title">效率工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="效率工具" class="mobile-dropdown-title"><span class="title">效率工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/efficiency/开发环境搭建-docker.html" class="nav-link">
+  Docker环境
+</a></li><li class="dropdown-item"><!----> <a href="/efficiency/10分钟教你用 Google Cloud Platform 搭建自己的VPN.html" class="nav-link">
+  VPN搭建
+</a></li><li class="dropdown-item"><!----> <a href="/efficiency/用Cursor开启JAVA+AI生涯.html" class="nav-link">
+  AI开发
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="英语学习" class="dropdown-title"><span class="title">英语学习</span> <span class="arrow down"></span></button> <button type="button" aria-label="英语学习" class="mobile-dropdown-title"><span class="title">英语学习</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/english/Oxford Phonics World- The Alphabet.html" class="nav-link">
+  自然拼读
+</a></li><li class="dropdown-item"><!----> <a href="/english/parts-of-speech.html" class="nav-link">
+  语法基础
+</a></li></ul></div></div><div class="nav-item"><a href="/about/" class="nav-link">
+  关于我
+</a></div> <a href="https://github.com/diveultra/diveultra" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>效率工具</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/efficiency/DevEfficiencyTools.html" aria-current="page" class="active sidebar-link">开发效率提升之工具篇</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/efficiency/DevEfficiencyTools.html#必装工具" class="sidebar-link">必装工具</a></li><li class="sidebar-sub-header"><a href="/efficiency/DevEfficiencyTools.html#java开发环境和工具" class="sidebar-link">JAVA开发环境和工具</a></li><li class="sidebar-sub-header"><a href="/efficiency/DevEfficiencyTools.html#任务和项目管理" class="sidebar-link">任务和项目管理</a></li><li class="sidebar-sub-header"><a href="/efficiency/DevEfficiencyTools.html#笔记和文档" class="sidebar-link">笔记和文档</a></li><li class="sidebar-sub-header"><a href="/efficiency/DevEfficiencyTools.html#安全和隐私" class="sidebar-link">安全和隐私</a></li><li class="sidebar-sub-header"><a href="/efficiency/DevEfficiencyTools.html#其他实用工具" class="sidebar-link">其他实用工具</a></li><li class="sidebar-sub-header"><a href="/efficiency/DevEfficiencyTools.html#通信" class="sidebar-link">通信</a></li><li class="sidebar-sub-header"><a href="/efficiency/DevEfficiencyTools.html#homebrew安装" class="sidebar-link">Homebrew安装</a></li><li class="sidebar-sub-header"><a href="/efficiency/DevEfficiencyTools.html#oh-my-zsh安装" class="sidebar-link">Oh My Zsh安装</a></li><li class="sidebar-sub-header"><a href="/efficiency/DevEfficiencyTools.html#安装tabby" class="sidebar-link">安装Tabby</a></li><li class="sidebar-sub-header"><a href="/efficiency/DevEfficiencyTools.html#安装-java-jdk-17" class="sidebar-link">安装 Java JDK 17</a></li><li class="sidebar-sub-header"><a href="/efficiency/DevEfficiencyTools.html#安装软件" class="sidebar-link">安装软件</a></li><li class="sidebar-sub-header"><a href="/efficiency/DevEfficiencyTools.html#chrome-extension" class="sidebar-link">Chrome Extension</a></li><li class="sidebar-sub-header"><a href="/efficiency/DevEfficiencyTools.html#idea插件" class="sidebar-link">IDEA插件</a></li><li class="sidebar-sub-header"><a href="/efficiency/DevEfficiencyTools.html#docker-安装基础服务" class="sidebar-link">Docker 安装基础服务</a></li></ul></li><li><a href="/efficiency/开发环境搭建-docker.html" class="sidebar-link">开发环境搭建-docker</a></li><li><a href="/efficiency/10分钟教你用 Google Cloud Platform 搭建自己的VPN.html" class="sidebar-link">10分钟教你用 Google Cloud Platform 搭建自己的VPN</a></li><li><a href="/efficiency/用Cursor开启JAVA+AI生涯.html" class="sidebar-link">/efficiency/用Cursor开启JAVA+AI生涯.html</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="必装工具"><a href="#必装工具" class="header-anchor">#</a> 必装工具</h2> <ul><li><strong>Homebrew</strong>：MacOS 的包管理器，可以用来安装各种命令行工具。</li> <li><strong>Alfred</strong>：一个强大的工具，可以提高工作效率，功能包括快速搜索文件、启动应用程序等。</li> <li><strong>Zapier</strong>: 一个在线自动化工具，可以连接数千个应用和服务，自动执行任务，节省时间和精力。</li> <li><strong>CleanMyMac</strong>：系统清理和优化工具，帮助您释放磁盘空间，维护系统性能。</li> <li><strong>Bartender</strong>：用于管理 Mac 菜单栏图标的工具。</li> <li><strong>MenuBarX</strong>：是一款专为 macOS 设计的应用程序，它允许用户将网页应用或网站直接集成到 macOS 的菜单栏中。这样，用户可以快速访问他们最常用的网页服务，如社交媒体、任务管理工具、新闻网站等，无需打开传统的网页浏览器。</li> <li><strong>Dash</strong>：Dash 是一款为 macOS 用户设计的 API 文档浏览器和代码片段管理器。它提供了一个集中的平台，用户可以在其中搜索、浏览和管理大量的编程文档和代码片段。Dash 主要面向软件开发者，特别是那些需要快速访问和参考多种编程语言和框架文档的开发者</li> <li><strong>Cheat Sheet</strong>: 一个简单的应用，当用户长按 Command 键时，它会显示当前应用程序的所有快捷键</li> <li><strong>aText</strong>：aText 是一款文本替换工具，主要用于自动化文本输入，帮助用户节省输入重复文本的时间。这款软件通过在用户设定的缩写或快捷键后自动插入预设的文本片段或代码，从而提高打字效率和工作效率。aText 在 macOS 和 Windows 平台上都有提供</li> <li><strong>SnippetsLab</strong>：一款专为开发者设计的代码片段管理工具，它提供了一个优雅且高效的方式来收集、组织和搜索代码片段。这款软件仅适用于 macOS 平台，非常适合那些需要管理大量代码片段的程序员和软件开发者</li> <li><strong>Magnet</strong>：是一款专为 macOS 设计的窗口管理工具，它允许用户通过简单的拖拽和键盘快捷键来快速整理和管理桌面上的窗口。这款应用非常适合那些需要在多个应用程序或文档之间高效工作的用户，尤其是在多显示器设置中。</li> <li><strong>Sip</strong>：取色器</li> <li><strong>Google Chrome</strong>：功能强大的网络浏览器，支持广泛的扩展程序。</li> <li><strong>Mozilla Firefox</strong>：一个注重隐私保护的浏览器，也支持多种扩展。</li> <li><strong>Opera</strong>：一款功能丰富的网络浏览器，由挪威的 Opera Software 开发。自 1995 年首次发布以来，Opera 浏览器以其创新的功能和对用户隐私的重视而闻名。Opera 不仅支持 Windows、macOS 和 Linux，还有适用于 Android 和 iOS 的移动版本</li> <li><strong>Slack</strong>：团队协作和通讯工具，支持多种集成服务。</li> <li><strong>Zoom</strong> ：用于视频会议和远程协作的应用。</li> <li><strong>Lark</strong>：Lark（在中国市场称为飞书 Feishu）是由字节跳动（ByteDance）开发的一款企业级协作工具。它集成了多种功能，包括即时通讯、视频会议、日历、邮件、文档和表格等，旨在提高团队的沟通效率和工作协同能力。Lark 旨在为企业提供一个全面的办公自动化解决方案，支持多平台使用，包括 Windows、macOS、iOS 和 Android。</li> <li><strong>RescueTime</strong>: 自动跟踪您在计算机上的活动，帮助您了解时间花在了哪里，并提供详细的报告和生产力评分。</li> <li><strong>Pomodoro Timer</strong>: 基于番茄工作法的时间管理工具，帮助您通过设定工作和休息的时间间隔来提高专注力和效率。</li> <li><strong>Airmail</strong>: 一个专为 Apple 设备设计的邮件客户端，界面简洁，功能强大，支持多种邮件服务。</li> <li><strong>1Password</strong> 或 LastPass：帮助您安全地存储和管理密码。</li> <li>**PDF Expert: ** 是一款功能强大的 PDF 编辑和管理工具，主要面向 macOS 和 iOS 用户。它由 Readdle 开发，提供了一系列高级功能，使用户能够轻松地查看、编辑、注释、签署和管理 PDF 文件。PDF Expert 因其直观的用户界面和高效的性能而受到许多用户的喜爱</li> <li><strong>iStat Menus</strong>： 是一款为 macOS 设计的系统监控工具，由 Bjango 开发。这款软件提供了一个强大的菜单栏工具，可以实时显示关于您的 Mac 电脑的各种关键信息，包括 CPU、内存、硬盘、网络、温度传感器、电池和更多。</li> <li><strong>OmniFocus</strong>：一款高级的个人任务管理工具，专为 macOS 和 iOS 设计，由 The Omni Group 开发。这款软件以其强大的功能和灵活性而闻名，特别适合那些需要管理复杂项目和多任务的专业人士。OmniFocus 基于获取事物完成（Getting Things Done）的生产力方法，帮助用户组织任务、设置提醒和监控进度。</li> <li><strong>Hazel</strong>： 是一款为 macOS 设计的自动化工具，由 Noodlesoft 开发。它主要用于帮助用户管理文件和文件夹，通过创建规则来自动执行各种任务，如组织文件、清理旧文件和执行脚本等。Hazel 的强大之处在于它可以监控任何指定的文件夹，并根据用户设定的条件自动执行操作，极大地提高了文件管理的效率和自动化程度。</li> <li><strong>OmniGraffle</strong>： 是一款专业的图形和设计工具，由 The Omni Group 开发，主要面向 macOS 和 iOS 平台。这款软件广泛用于创建精美的图表、流程图、组织结构图、界面设计草图以及其他各种类型的图形文档。OmniGraffle 以其强大的功能和灵活性而受到设计师、工程师、项目管理者和其他需要进行图形表达的专业人士的青睐。</li> <li><strong>Snipaste</strong>：一款功能强大的截图工具，同时也支持贴图功能。它允许用户快速截取屏幕上的任何内容，并可以将截图“贴”回到屏幕上，作为临时的浮动窗口。此外，Snipaste 还提供一些基本的图像编辑功能，如标注、高亮等</li> <li><strong>ScreenFlow</strong>：ScreenFlow 是一款专为 macOS 设计的高级视频编辑和屏幕录制软件。它不仅可以捕捉屏幕、摄像头和音频，还提供了强大的视频编辑功能，包括添加过渡、动画、文本和更多。ScreenFlow 是专业视频制作者和教育工作者的理想选择</li> <li><strong>Licecap</strong>：一款简单的桌面应用程序，用于捕捉屏幕上的活动并将其保存为 GIF 格式。它支持 Windows 和 macOS 平台，用户可以通过调整框架大小来选择捕捉区域，还可以设置帧率和暂停录制</li> <li><strong>keyCastr</strong>：KeyCastr 是一款开源的键盘动作显示软件，主要用于教学和演示目的。它可以在屏幕上显示用户的键盘输入，非常适合录制教程视频或进行实时演示时使用。</li> <li><strong>Vox Music Player</strong>：Mac上最好用的免费全能音乐播放器</li> <li><strong>IINA</strong>：IINA 是专为 macOS 设计的现代媒体播放器，界面美观，支持 Dark Mode，使用 Swift 编写，优化了触控板的操作</li> <li><strong>Plex</strong>：Plex 不仅是一个视频播放器，还是一个强大的媒体服务器。它可以组织你的视频、音乐和照片，并使它们在所有设备上可用。</li></ul> <h2 id="java开发环境和工具"><a href="#java开发环境和工具" class="header-anchor">#</a> JAVA开发环境和工具</h2> <ul><li><strong>IntelliJ IDEA</strong>：这是一个强大的 Java 集成开发环境（IDE），由 JetBrains 开发。它提供了代码自动完成、重构、强大的调试工具和许多其他高级编程功能。有社区版（免费）和专业版（付费）</li> <li><strong>Webstorm</strong>：前端编辑器</li> <li><strong>Cursor</strong>：Cursor是一个基于Visual Studio Code（VS Code）技术构建的高级代码编辑器，转为提高编程效率并更深度整合AI功能设计。它不仅继承了VS Code的强大功能和用户界面，还增加了专门针对AI支持的特色功能。</li> <li><strong>Maven</strong>：Java 项目的依赖管理和构建工具。它使用简单的 XML 文件来描述项目构建过程、依赖关系等。</li> <li><strong>Git</strong>：版本控制系统，用于源代码管理。可以通过 Homebrew 安装 (brew install git)。</li> <li><strong>Navicat Premium</strong>：一款强大的数据库管理和开发工具，支持多种数据库系统，包括 MySQL, PostgreSQL, SQLite, Oracle, 以及 MariaDB。它提供了一个统一的界面来连接多个数据库，使得数据库管理变得更加简单高效。Navicat Premium 适用于数据库管理员、开发者和分析师，特别是那些需要同时处理多种数据库的专业人士。</li> <li><strong>Another Redis Desktop Manager</strong>：一个开源的 Redis 数据库桌面管理工具，它提供了一个简洁且功能丰富的界面，用于管理和监控 Redis 数据库。这款工具适用于开发者和系统管理员，特别是那些寻求一个轻量级且高效的 Redis 管理解决方案的用户。</li> <li><strong>Oh My Zsh</strong>：一个管理 zsh 配置的框架，提供大量插件和主题，可以极大地提升终端的使用体验。</li> <li><strong>Tabby</strong>：Tabby（原名 Terminus）是一款开源的终端模拟器，它支持 Windows、macOS 和 Linux 平台。Tabby 不仅是一个传统的命令行界面，还提供了许多现代化的功能和改进，使其成为开发者和系统管理员的理想选择。</li> <li><strong>Docker</strong>：容器化平台，可以用来创建、部署和运行应用程序。通过容器，开发者可以将应用及其依赖一起打包，便于迁移和部署。</li> <li><strong>Postman</strong>：一个强大的 API 开发工具，用于测试 API 接口、创建和运行 HTTP 请求。</li> <li><strong>Charles</strong>：一个 HTTP 代理/HTTP 监视器/反向代理，可以用来查看所有连接互联网的 HTTP 和 SSL/HTTPS 通信。</li> <li><strong>JProfiler</strong> 或 <strong>YourKit Java Profiler</strong>：这些工具可以帮助分析 Java 应用的性能，包括 CPU、内存使用情况等。</li> <li><strong>Typora</strong>：是一款流行的 Markdown 编辑器，以其简洁的界面和所见即所得（WYSIWYG）的编辑体验而闻名。它支持多种操作系统，包括 Windows、macOS 和 Linux。Typora 通过将 Markdown 的语法直接转换为格式化文本，使得文档的编写和编辑过程更加直观和高效。</li> <li><strong>1Checker</strong>：英语拼写检查，避免尴尬错误</li> <li><strong>Gas Mask</strong>：快速编辑和切换hosts文件</li> <li><strong>Switchkey</strong>： 可以根据当前APP窗口自动切换指定的输入法，当需要在代码与中文输入软件之间切换时，特别好用</li> <li><strong>Proxifier</strong>： 是一款强大的网络工具，允许网络应用程序通过 SOCKS 或 HTTPS 代理服务器和链进行网络请求，即使这些应用程序原本不支持代理服务器使用也能通过 Proxifier 实现。这使得 Proxifier 成为在特定网络环境下管理网络连接和绕过限制的有效工具。</li> <li><strong>Keka</strong>：是一款流行的文件压缩和解压缩工具，专为 macOS 设计。它支持多种压缩格式，提供了一个简单而强大的界面，使得文件压缩和解压变得非常便捷。Keka 不仅能够处理常见的压缩文件格式，还提供了高级功能，如密码保护和文件分割，适合需要高效文件管理的用户。</li> <li><strong>Kaleidoscope</strong>： 是一款专为 macOS 设计的文件和图像比较工具，由 Black Pixel 开发。这款软件能够帮助用户快速比较文本文件、图像和文件夹的差异，非常适合开发者、设计师和其他需要精确比较文件内容的专业人士使用。</li> <li><strong>Beyond Compare</strong>：一款由 Scooter Software 开发的高级文件和文件夹比较工具，它允许用户快速和容易地比较他们的文件和文件夹。通过使用简单的、强大的命令，用户可以专注于他们感兴趣的差异，并忽略那些他们不感兴趣的。Beyond Compare 支持多种操作系统，包括 Windows, Linux 和 macOS，使其成为跨平台工作的理想选择。</li> <li><strong>Xmind</strong>：一款广受欢迎的思维导图和大脑风暴软件，它帮助用户组织思想、计划项目和整理复杂信息。Xmind 支持多种平台，包括 Windows、macOS、Linux 以及 iOS 和 Android 移动设备，使其成为个人和团队协作的理想工具。</li> <li><strong>FileZilla</strong>：免费开源的FTP应用</li> <li><strong>TeamViewer</strong>：远程开发或者协助必备应用</li> <li><strong>Sublime Text3</strong>：编辑器</li> <li><strong>Draw</strong>：</li></ul> <h2 id="任务和项目管理"><a href="#任务和项目管理" class="header-anchor">#</a> 任务和项目管理</h2> <p>Notion: 一个多功能的工作空间，可以用来管理笔记、任务、数据库和更多。它的灵活性使其成为组织各种信息的理想工具。</p> <p>Trello: 基于看板的项目管理工具，适用于个人和团队项目跟踪。它的视觉界面非常直观，适合管理项目流程。</p> <p>Asana: 一个功能强大的任务和项目管理工具，适合团队协作。它支持任务分配、时间线、项目模板和详细的进度报告。</p> <h2 id="笔记和文档"><a href="#笔记和文档" class="header-anchor">#</a> 笔记和文档</h2> <p>Evernote: 一个强大的笔记应用，支持文本、图片、音频和其他多媒体内容的存储。它的搜索功能非常强大，适合存储大量笔记。</p> <p>Microsoft OneNote: 一个免费的笔记应用，支持丰富的编辑功能和多用户协作。</p> <p>Bear: 一个为 Mac 和 iOS 设计的优雅笔记应用，支持 Markdown 编辑，适合写作和笔记。</p> <h2 id="安全和隐私"><a href="#安全和隐私" class="header-anchor">#</a> 安全和隐私</h2> <p>NordVPN 或 ExpressVPN：提供安全和匿名上网的 VPN 服务。</p> <p>Malwarebytes：防病毒和恶意软件保护工具。</p> <h2 id="其他实用工具"><a href="#其他实用工具" class="header-anchor">#</a> 其他实用工具</h2> <ul><li><p>openEmu：模拟器，可以玩魂斗罗之类，放松回到小时候</p></li> <li><p>Dynamic Wallpaper：壁纸，在多个操作系统中可以使用的功能，它允许用户的桌面壁纸根据特定条件动态变化，如时间、天气或系统事件。这种壁纸提供了比静态图像更丰富的视觉体验，使用户的设备界面更加生动和个性化。</p></li> <li><p>Downie：一款专门设计用于 macOS 的视频下载软件，支持从数千个不同的网站下载视频，包括一些最流行的视频分享平台如 YouTube、Vimeo、Facebook 等。Downie 用户界面简洁，操作直观，使得下载网络视频变得非常简单</p></li> <li><p>Neat Download Manager：一款高速下载管理软件，支持 macOS 和 Windows 平台。这款工具以其简洁的用户界面和提升下载速度的能力而受到用户的欢迎。它可以有效地管理和加速文件的下载过程，特别适合需要下载大量文件或大文件的用户。</p></li> <li><p>shuttle：免费的简易的SSH快捷菜单</p></li> <li><p>MonitorControl：控制外接显示器的屏幕亮度和声音</p></li> <li><p>Fliqlo和BrookLyn：屏保</p></li> <li><p>DiskWarrior：恢复文件系统损坏时，磁盘工具进行选择</p></li> <li><p>Data Rescue：多种情况下的全面和专业的数据恢复</p></li> <li><p>Lantern：科学上网</p></li> <li><p>ShadowsocksX：科学上网</p></li> <li><p>BetterZIP：解压缩</p></li></ul> <h2 id="通信"><a href="#通信" class="header-anchor">#</a> 通信</h2> <ul><li>Wechat</li> <li>Telegram</li> <li>wathApp</li></ul> <h2 id="homebrew安装"><a href="#homebrew安装" class="header-anchor">#</a> Homebrew安装</h2> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 安装 Homebrew</span>
+/bin/bash <span class="token parameter variable">-c</span> <span class="token string">&quot;<span class="token variable"><span class="token variable">$(</span><span class="token function">curl</span> <span class="token parameter variable">-fsSL</span> https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="token variable">)</span></span>&quot;</span>
+
+<span class="token comment"># 配置环境变量</span>
+<span class="token comment"># 编辑 ~/.zshrc 文件</span>
+<span class="token function">vim</span> ~/.zshrc
+
+<span class="token comment"># 在 ~/.zshrc 文件中添加以下行</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token string">&quot;/usr/local/bin:<span class="token environment constant">$PATH</span>&quot;</span>
+
+<span class="token comment"># 使更改生效</span>
+<span class="token builtin class-name">source</span> ~/.zshrc 
+
+<span class="token comment"># 验证安装（如果一切正常，您将看到输出 Your system is ready to brew. 这意味着 Homebrew 已成功安装并配置好了。）</span>
+brew doctor
+
+<span class="token comment"># 更新 Homebrew</span>
+brew update
+</code></pre></div><h2 id="oh-my-zsh安装"><a href="#oh-my-zsh安装" class="header-anchor">#</a> Oh My Zsh安装</h2> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 查看 Zsh 可执行文件的路径</span>
+<span class="token function">which</span> <span class="token function">zsh</span>
+
+<span class="token comment"># 查看系统安装的Shell</span>
+<span class="token function">cat</span> /etc/shells
+
+<span class="token comment"># 检查当前的 shell</span>
+<span class="token builtin class-name">echo</span> <span class="token environment constant">$SHELL</span>
+
+<span class="token comment"># 如果输出不是 /bin/zsh，您可以通过以下命令安装 Zsh</span>
+brew <span class="token function">install</span> <span class="token function">zsh</span>
+
+<span class="token comment"># 将 Zsh 设置为默认的 shell</span>
+chsh <span class="token parameter variable">-s</span> /bin/zsh
+
+<span class="token comment"># 通过 curl 安装 Oh My Zsh</span>
+<span class="token function">sh</span> <span class="token parameter variable">-c</span> <span class="token string">&quot;<span class="token variable"><span class="token variable">$(</span><span class="token function">curl</span> <span class="token parameter variable">-fsSL</span> https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh<span class="token variable">)</span></span>&quot;</span>
+
+<span class="token comment"># 查看主题</span>
+<span class="token function">ls</span> ~./oh-my-zsh/theme
+
+<span class="token comment"># 编辑 ~/.zshrc 文件</span>
+<span class="token function">vim</span> ~/.zshrc
+
+<span class="token comment"># .zshrc 文件中更改主题</span>
+<span class="token assign-left variable">ZSH_THEME</span><span class="token operator">=</span><span class="token string">&quot;ys&quot;</span>
+
+<span class="token comment"># 使更改生效</span>
+<span class="token builtin class-name">source</span> ~/.zshrc 
+
+<span class="token comment"># 安装插件到~/.oh-my-zsh/custom/plugins目录</span>
+<span class="token comment"># 安装语法高亮插件zsh-syntax-highlighting</span>
+<span class="token function">git</span> clone https://github.com/zsh-users/zsh-syntax-highlighting.git <span class="token variable">${ZSH_CUSTOM<span class="token operator">:-</span>~<span class="token operator">/</span>.oh-my-zsh<span class="token operator">/</span>custom}</span>/plugins/zsh-syntax-highlighting
+
+<span class="token comment"># 安装效率插件zsh-autosuggestions</span>
+<span class="token function">git</span> clone https://github.com/zsh-users/zsh-autosuggestions <span class="token variable">${ZSH_CUSTOM<span class="token operator">:-</span>~<span class="token operator">/</span>.oh-my-zsh<span class="token operator">/</span>custom}</span>/plugins/zsh-autosuggestions
+
+<span class="token comment"># 安装快速跳转到常用目录的插件autojump</span>
+brew <span class="token function">install</span> autojump
+
+<span class="token comment"># 启用插件</span>
+<span class="token comment"># 编辑 ~/.zshrc 文件</span>
+<span class="token function">vim</span> ~/.zshrc
+
+<span class="token comment"># 增加对应的插件</span>
+<span class="token assign-left variable">plugins</span><span class="token operator">=</span><span class="token punctuation">(</span>git zsh-syntax-highlighting autojump<span class="token punctuation">)</span>
+
+<span class="token comment"># 保存 .zshrc 文件后，您需要重新加载它以应用更改</span>
+<span class="token builtin class-name">source</span> ~/.zshrc 
+</code></pre></div><h2 id="安装tabby"><a href="#安装tabby" class="header-anchor">#</a> 安装Tabby</h2> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#安装Tabby</span>
+brew <span class="token function">install</span> <span class="token parameter variable">--cask</span> tabby
+</code></pre></div><p>安装完 Oh My Zsh 后，您需要配置 Tabby 使用 Zsh 作为默认的 shell：</p> <p>打开 Tabby。</p> <ol start="2"><li>进入 Settings（设置）。</li> <li>在 Shell 部分，选择 Zsh 作为默认 shell。如果 Zsh 的路径不是自动填充的，您可能需要手动输入 Zsh 的路径，通常是 /bin/zsh 或 /usr/local/bin/zsh（如果您通过 Homebrew 安装的 Zsh）。</li> <li>确保 Environment（环境变量）部分正确设置了 ZSH 和 ZSH_CUSTOM 环境变量（如果您自定义了 Oh My Zsh 的安装位置）。</li> <li>应用更改并重启 Tabby</li></ol> <h2 id="安装-java-jdk-17"><a href="#安装-java-jdk-17" class="header-anchor">#</a> 安装 Java JDK 17</h2> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 安装 Java JDK 17</span>
+brew <span class="token function">install</span> openjdk@17
+
+<span class="token comment"># 配置 JAVA_HOME 环境变量</span>
+<span class="token comment"># 找出 JDK 17 的安装路径</span>
+brew <span class="token parameter variable">--prefix</span> openjdk@17
+
+<span class="token comment"># 编辑 ~/.zshrc 文件</span>
+<span class="token function">vim</span> ~/.zshrc
+
+<span class="token comment"># 在文件中添加 JAVA_HOME 环境变量定义，替换 &lt;path_to_jdk&gt; 为您的 JDK 路径，例如</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">JAVA_HOME</span><span class="token operator">=</span><span class="token string">&quot;<span class="token variable"><span class="token variable">$(</span>brew <span class="token parameter variable">--prefix</span> openjdk@17<span class="token variable">)</span></span>&quot;</span>
+
+<span class="token comment"># 将 JAVA_HOME 添加到 PATH</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token string">&quot;<span class="token variable">$JAVA_HOME</span>/bin:<span class="token environment constant">$PATH</span>&quot;</span>
+
+<span class="token comment"># 应用更改（重新加载使更改生效）</span>
+<span class="token builtin class-name">source</span> ~/.zshrc
+
+<span class="token comment"># 验证安装</span>
+<span class="token function">java</span> <span class="token parameter variable">-version</span>
+javac <span class="token parameter variable">-version</span>
+</code></pre></div><h2 id="安装软件"><a href="#安装软件" class="header-anchor">#</a> 安装软件</h2> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 安装浏览器</span>
+<span class="token comment"># 安装Google Chrome</span>
+brew <span class="token function">install</span> <span class="token parameter variable">--cask</span> google-chrome.
+
+<span class="token comment"># 安装Mozilla Firefox</span>
+brew <span class="token function">install</span> <span class="token parameter variable">--cask</span> firefox
+
+<span class="token comment"># 安装Opera</span>
+brew <span class="token function">install</span> <span class="token parameter variable">--cask</span> opera
+
+
+<span class="token comment"># 安装通讯软件</span>
+<span class="token comment"># 安装Slack</span>
+brew <span class="token function">install</span> <span class="token parameter variable">--cask</span> slack
+
+<span class="token comment"># 安装Zoom</span>
+brew <span class="token function">install</span> <span class="token parameter variable">--cask</span> zoom
+
+<span class="token comment"># 安装Lark</span>
+brew <span class="token function">install</span> <span class="token parameter variable">--cask</span> lark
+
+<span class="token comment"># 安装Wechat</span>
+brew <span class="token function">install</span> <span class="token parameter variable">--cask</span> wechat
+
+<span class="token comment"># 安装telegram</span>
+brew <span class="token function">install</span> <span class="token parameter variable">--cask</span> telegram
+
+<span class="token comment"># 安装WhatsApp</span>
+brew <span class="token function">install</span> <span class="token parameter variable">--cask</span> whatsapp
+
+<span class="token comment"># 安装RescueTime</span>
+brew <span class="token function">install</span> <span class="token parameter variable">--cask</span> rescuetime
+
+<span class="token comment"># 安装pomatez</span>
+brew <span class="token function">install</span> <span class="token parameter variable">--cask</span> pomatez
+
+<span class="token comment"># 安装Vox Music Player</span>
+brew <span class="token function">install</span> <span class="token parameter variable">--cask</span> vox
+
+<span class="token comment"># 安装IINA</span>
+ brew <span class="token function">install</span> <span class="token parameter variable">--cask</span> iina
+ 
+<span class="token comment"># 安装Plex</span>
+brew <span class="token function">install</span> <span class="token parameter variable">--cask</span> plex
+
+<span class="token comment"># 安装Maven</span>
+brew <span class="token function">install</span> maven
+
+<span class="token comment"># 安装Git</span>
+brew <span class="token function">install</span> <span class="token function">git</span>
+
+<span class="token comment"># 安装Another Redis Desktop Manager</span>
+brew <span class="token function">install</span> <span class="token parameter variable">--cask</span> another-redis-desktop-manager
+
+<span class="token comment"># 安装Docker</span>
+brew <span class="token function">install</span> <span class="token parameter variable">--cask</span> <span class="token function">docker</span>
+
+<span class="token comment"># 安装Postman</span>
+brew <span class="token function">install</span> <span class="token parameter variable">--cask</span> postman
+
+<span class="token comment"># 安装Typora</span>
+brew <span class="token function">install</span> <span class="token parameter variable">--cask</span> typora
+
+<span class="token comment"># 安装FileZilla</span>
+brew <span class="token function">install</span> <span class="token parameter variable">--cask</span> filezilla
+
+<span class="token comment"># 安装Trello</span>
+brew <span class="token function">install</span> <span class="token parameter variable">--cask</span> trello
+
+<span class="token comment"># 安装Microsoft OneNote</span>
+brew <span class="token function">install</span> <span class="token parameter variable">--cask</span> onenote
+
+<span class="token comment"># 安装openEmu</span>
+brew <span class="token function">install</span> <span class="token parameter variable">--cask</span> openemu
+
+<span class="token comment"># 安装Downie</span>
+brew <span class="token function">install</span> <span class="token parameter variable">--cask</span> downie
+
+<span class="token comment"># 安装Neat Download Manager</span>
+brew <span class="token function">install</span> <span class="token parameter variable">--cask</span> neat-download-manager
+
+<span class="token comment"># 安装MonitorControl</span>
+brew <span class="token function">install</span> <span class="token parameter variable">--cask</span> monitorcontrol
+
+<span class="token comment"># Fliqlo</span>
+brew <span class="token function">install</span> <span class="token parameter variable">--cask</span> fliqlo
+</code></pre></div><h2 id="chrome-extension"><a href="#chrome-extension" class="header-anchor">#</a> Chrome Extension</h2> <ul><li>Downie：下载</li> <li>Neat Download Manager：下载</li> <li>whistle：node实现抓包工具，配合chrome扩展</li> <li>Postman：接口调试工具</li> <li>EditThisCookie：cookie编辑工具</li> <li>JSONView：Json预览工具，接口调试必备</li> <li>OneTab：快速关闭并存储浏览器当前窗口所以Tab页，可用于下次一键全部恢复</li> <li>阅读模式：快速开启阅读模式</li> <li>AdBlock：超强的去广告工具</li> <li>Chrome Remote Desktop：远程控制</li> <li>Google input tools：控制输入法</li> <li>Saladict：翻译</li> <li>Pomodoro Timer：番茄工作法</li></ul> <h2 id="idea插件"><a href="#idea插件" class="header-anchor">#</a> IDEA插件</h2> <p><strong>Lombok Plugin</strong></p> <p>功能：简化 Java 代码，自动化生成 getter、setter、equals、hashCode 和 toString 方法等。</p> <p>优势：减少模板代码的编写，使代码更加简洁。</p> <p><strong>SonarLint</strong></p> <p>功能：实时检查代码质量，提供即时反馈，帮助开发者修复潜在的代码问题。</p> <p>优势：集成了 SonarQube 的代码分析功能，增强代码的可维护性和可靠性。</p> <p><strong>Alibaba Java Coding Guidelines</strong></p> <p>功能：根据阿里巴巴的 Java 编码规范，对代码进行实时检查和分析。</p> <p>优势：帮助开发者遵守一致的编码标准，提高代码质量和可维护性。</p> <p><strong>Codota AI Autocomplete for Java and JavaScript</strong></p> <p>功能：提供基于 AI 的代码自动完成建议，支持 Java 和 JavaScript。</p> <p>优势：通过学习大量代码库来提供智能的代码补全建议，提高编码效率和准确性。</p> <p><strong>GsonFormatPlus</strong></p> <p>功能：根据 JSON 字符串快速生成 Java 类。</p> <p>优势：节省手动编写解析代码的时间，减少错误，提高开发效率。</p> <p><strong>JsonParser</strong></p> <p>功能：提供一个简单的 JSON 字符串解析器和编辑器。</p> <p>优势：直接在 IDE 中查看和编辑 JSON，提高处理 JSON 数据的便捷性。</p> <p><strong>MyBatisX</strong></p> <p>功能：为 MyBatis 提供代码生成和图形界面操作。</p> <p>优势：自动化 MyBatis 相关代码的生成，提供 SQL 映射文件和接口的快速导航，提高开发效率。</p> <p><strong>RestfulTool</strong></p> <p>功能：提供 RESTful API 的开发和测试工具。</p> <p>优势：可以直接在 IDE 中测试 API，查看请求和响应详情，提高 API 开发和调试的效率。</p> <p><strong>Translation</strong></p> <p>功能：提供代码注释和字符串的翻译功能。</p> <p>优势：支持多种语言，帮助开发者理解使用不同语言编写的代码，特别是在多国团队协作中非常有用。</p> <p><strong>Unicoder</strong></p> <p>功能：方便地输入和转换 Unicode 字符。</p> <p>优势：提高处理特殊字符和国际化项目的效率。</p> <p><strong>CamelCase</strong></p> <p>功能：提供快速切换标识符命名风格（如驼峰命名、下划线等）的工具。</p> <p>优势：提高代码的可读性和一致性，尤其是在需要遵守特定命名约定的项目中。</p> <p><strong>GitToolBox</strong></p> <p>功能：增强 Git 支持，提供更详细的分支信息和更丰富的 Git 操作。</p> <p>优势：改善了版本控制的可视化和操作性，使 Git 管理更加方便。</p> <p><strong>Database Navigator</strong></p> <p>功能：提供数据库连接、查询、管理和代码生成工具。</p> <p>优势：直接在 IDE 中管理数据库，无需切换到其他数据库工具。</p> <p><strong>Maven Helper</strong></p> <p>功能：提供 Maven 依赖管理和冲突解决工具。</p> <p>优势：帮助开发者更好地管理和优化 Maven 项目的依赖。</p> <p><strong>Key Promoter X</strong></p> <p>功能：显示可以用快捷键执行的当前操作的提示，帮助用户学习和使用快捷键。</p> <p>优势：提高开发效率，减少鼠标使用。</p> <p><strong>IDE Features Trainer</strong></p> <p>功能：通过交互式教程教学 IntelliJ IDEA 的使用技巧。</p> <p>优势：帮助新用户快速掌握 IDE 的高级功能。</p> <p><strong>Rainbow Brackets</strong></p> <p>功能：为代码中的括号添加彩虹色彩，增强代码的可读性。</p> <p>优势：使嵌套的代码块更容易区分，提高代码编辑的舒适度。</p> <p><strong>CodeGlance</strong></p> <p>功能：在编辑器旁边显示代码地图（类似于 Sublime Text 的 Minimap）。</p> <p>优势：快速浏览和导航大型文件。</p> <h2 id="docker-安装基础服务"><a href="#docker-安装基础服务" class="header-anchor">#</a> Docker 安装基础服务</h2> <h3 id="docker-启动-redis"><a href="#docker-启动-redis" class="header-anchor">#</a> Docker 启动 redis</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">docker</span> run <span class="token parameter variable">--name</span> myredis <span class="token parameter variable">-p</span> <span class="token number">6379</span>:6379 <span class="token parameter variable">-d</span> redis <span class="token parameter variable">--requirepass</span> <span class="token string">&quot;设定你的密码&quot;</span>
+</code></pre></div><h3 id="nacos-安装"><a href="#nacos-安装" class="header-anchor">#</a> Nacos 安装</h3> <ul><li><p>运行镜像(无需鉴权)：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">docker</span> run <span class="token punctuation">\</span>
+  <span class="token parameter variable">--name</span> nacos-standalone <span class="token parameter variable">-d</span> <span class="token parameter variable">-p</span> <span class="token number">8848</span>:8848 <span class="token parameter variable">-p</span> <span class="token number">9848</span>:9848 <span class="token parameter variable">-p</span> <span class="token number">9849</span>:9849 <span class="token punctuation">\</span>
+  <span class="token parameter variable">-e</span> <span class="token assign-left variable">NACOS_AUTH_ENABLE</span><span class="token operator">=</span>false <span class="token punctuation">\</span>
+  <span class="token parameter variable">-e</span> <span class="token assign-left variable">MODE</span><span class="token operator">=</span>standalone <span class="token punctuation">\</span>
+  nacos/nacos-server:v2.3.1
+</code></pre></div></li> <li><p>运行镜像(开启鉴权):</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">docker</span> run <span class="token punctuation">\</span>
+  <span class="token parameter variable">--name</span> nacos-standalone <span class="token parameter variable">-d</span> <span class="token parameter variable">-p</span> <span class="token number">8848</span>:8848 <span class="token parameter variable">-p</span> <span class="token number">9848</span>:9848 <span class="token parameter variable">-p</span> <span class="token number">9849</span>:9849 <span class="token punctuation">\</span>
+  <span class="token parameter variable">-e</span> <span class="token assign-left variable">NACOS_AUTH_ENABLE</span><span class="token operator">=</span>true <span class="token punctuation">\</span>
+  <span class="token parameter variable">-e</span> <span class="token assign-left variable">MODE</span><span class="token operator">=</span>standalone <span class="token punctuation">\</span>
+  <span class="token parameter variable">-e</span> <span class="token assign-left variable">NACOS_AUTH_TOKEN</span><span class="token operator">=</span>BladeKey012345678901234567890123456789012345678901234567890123456789 <span class="token punctuation">\</span>
+  <span class="token parameter variable">-e</span> <span class="token assign-left variable">NACOS_AUTH_IDENTITY_KEY</span><span class="token operator">=</span>nacos <span class="token punctuation">\</span>
+  <span class="token parameter variable">-e</span> <span class="token assign-left variable">NACOS_AUTH_IDENTITY_VALUE</span><span class="token operator">=</span>nacos <span class="token punctuation">\</span>
+  <span class="token parameter variable">-e</span> <span class="token assign-left variable">NACOS_AUTH_CACHE_ENABLE</span><span class="token operator">=</span>true <span class="token punctuation">\</span>
+  nacos/nacos-server:v2.3.1
+</code></pre></div></li></ul> <h3 id="gitlab-安装"><a href="#gitlab-安装" class="header-anchor">#</a> GitLab 安装</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">docker</span> run <span class="token parameter variable">-d</span> <span class="token punctuation">\</span>
+  <span class="token parameter variable">--hostname</span> gitlab.example.com <span class="token punctuation">\</span>
+  <span class="token parameter variable">--name</span> gitlab <span class="token punctuation">\</span>
+  <span class="token parameter variable">-p</span> <span class="token number">8443</span>:443 <span class="token punctuation">\</span>
+  <span class="token parameter variable">-p</span> <span class="token number">8080</span>:80 <span class="token punctuation">\</span>
+  <span class="token parameter variable">-p</span> <span class="token number">2222</span>:22 <span class="token punctuation">\</span>
+  <span class="token parameter variable">--restart</span> always <span class="token punctuation">\</span>
+  <span class="token parameter variable">-v</span> /srv/gitlab/config:/etc/gitlab <span class="token punctuation">\</span>
+  <span class="token parameter variable">-v</span> /srv/gitlab/logs:/var/log/gitlab <span class="token punctuation">\</span>
+  <span class="token parameter variable">-v</span> /srv/gitlab/data:/var/opt/gitlab <span class="token punctuation">\</span>
+  gitlab/gitlab-ce:latest
+
+<span class="token comment">#获取密码</span>
+<span class="token function">docker</span> <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> 容器名 <span class="token function">grep</span> <span class="token string">'Password:'</span> /etc/gitlab/initial_root_password
+</code></pre></div><p>参数说明：</p> <ul><li><code>--hostname</code>: GitLab 实例的主机名，可以使用你自己的域名或本地 IP 地址。</li> <li><code>--name</code>: 容器名称，这里将容器命名为 <code>gitlab</code>。</li> <li><code>-p</code>: 将容器内的端口映射到主机上。<code>8443</code> 是 HTTPS，<code>8080</code> 是 HTTP，<code>2222</code> 是 SSH。</li> <li><code>-v</code>: 挂载本地文件系统到容器，用于配置、日志和数据的持久化存储。</li></ul> <h3 id="sentinel-安装"><a href="#sentinel-安装" class="header-anchor">#</a> Sentinel 安装</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">docker</span> run <span class="token parameter variable">--name</span> sentinel <span class="token parameter variable">-d</span> <span class="token parameter variable">-p</span> <span class="token number">8858</span>:8858 <span class="token parameter variable">-d</span> bladex/sentinel-dashboard
+</code></pre></div><h3 id="前端开发环境搭建"><a href="#前端开发环境搭建" class="header-anchor">#</a> 前端开发环境搭建</h3> <h4 id="环境要求"><a href="#环境要求" class="header-anchor">#</a> 环境要求</h4> <ul><li>本地环境安装 <code>Node.js 、npm 、pnpm</code></li> <li>Node.js 版本建议<code>v20.15.0</code>，要求<code>Node 20+</code> 版本以上
+<code>( 因为Vite5 不再支持已 EOL 的 Node.js 14 / 16 / 17 / 19，现在需要 Node.js 18 / 20+ )</code></li></ul> <h4 id="环境安装"><a href="#环境安装" class="header-anchor">#</a> 环境安装</h4> <h5 id="windows安装nvm"><a href="#windows安装nvm" class="header-anchor">#</a> windows安装nvm</h5> <p><a href="https://link.segmentfault.com/?enc=HsKwAlauCXNll7cqXOCyRA%3D%3D.rX4vSgqv9TIL%2BucbmAjyjQ8cFv2gFgD79hAzlDKbopg%3D" target="_blank" rel="noopener noreferrer">nvm<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 是一款 Node.js 版本管理工具，允许用户通过命令行快速安装、切换和管理不同的 Node.js 版本。</p> <p><img src="C:%5CUsers%5CSlEddy%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240918093734215.png" alt="image-20240918093734215"></p> <h6 id="安装方式"><a href="#安装方式" class="header-anchor">#</a> 安装方式</h6> <ol><li>下载地址：https://github.com/coreybutler/nvm-windows/releases</li> <li>下载最新版本的 nvm-setup.exe</li> <li>运行下载的安装程序。安装过程中</li> <li><ul><li>接受许可协议</li> <li>选择安装目录（建议使用默认路径）</li> <li>选择 Node.js 符号链接的位置（同样建议使用默认路径）</li></ul></li> <li>安装完成后，打开一个新的命令提示符或 PowerShell 窗口。</li> <li>验证安装是否成功，输入：</li></ol> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 查看版本号，如果显示版本号，说明安装成功。</span>
+nvm version
+</code></pre></div><p><img src="C:%5CUsers%5CSlEddy%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240918094627994.png" alt="image-20240918094627994"></p> <h6 id="常用命令"><a href="#常用命令" class="header-anchor">#</a> 常用命令</h6> <div class="language-shell extra-class"><pre class="language-shell"><code>nvm <span class="token function">ls</span>                <span class="token comment"># 查看版本安装所有版本</span>
+nvm ls-remote         <span class="token comment"># 查看远程所有的 Node.js 版本</span>
+nvm <span class="token function">install</span> <span class="token number">20.15</span>.0     <span class="token comment"># 安装指定的 Node.js 版本</span>
+nvm use <span class="token number">20.15</span>.0       <span class="token comment"># 使用指定的 Node.js 版本</span>
+nvm <span class="token builtin class-name">alias</span> default <span class="token number">20.15</span>.0   <span class="token comment"># 设置默认 Node.js 版本</span>
+nvm <span class="token builtin class-name">alias</span> dev <span class="token number">20.15</span>.0   <span class="token comment"># 设置指定版本的别名，如将 20.15.0  版本别名设置为 dev</span>
+</code></pre></div><h5 id="安装node-js-、npm-、pnpm"><a href="#安装node-js-、npm-、pnpm" class="header-anchor">#</a> 安装Node.js 、npm 、pnpm</h5> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment">#安装node.js</span>
+nvm <span class="token function">install</span> <span class="token number">20.15</span>.0 
+
+<span class="token comment">#查看node版本</span>
+<span class="token function">node</span> <span class="token parameter variable">-v</span>
+
+<span class="token comment">#查看npm版本</span>
+<span class="token function">npm</span> <span class="token parameter variable">-v</span>
+
+<span class="token comment">#全局安装pnpm</span>
+<span class="token function">npm</span> <span class="token function">install</span> <span class="token function">pnpm</span> <span class="token parameter variable">-g</span>
+
+<span class="token comment">#查看pnpm版本</span>
+<span class="token function">pnpm</span> <span class="token parameter variable">-v</span>
+</code></pre></div><p>login_tokens:390f32fb-3b3b-4722-a89f-15ecccfe1452</p> <h3 id="开发环境搭建进阶"><a href="#开发环境搭建进阶" class="header-anchor">#</a> 开发环境搭建进阶</h3> <h4 id="mysql主从配置"><a href="#mysql主从配置" class="header-anchor">#</a> MySQL主从配置</h4> <h5 id="环境"><a href="#环境" class="header-anchor">#</a> 环境：</h5> <p>系统：Windows 10 专业版</p> <p>软件：Docker Desktop</p> <h5 id="docker安装mysql"><a href="#docker安装mysql" class="header-anchor">#</a> Docker安装MySQL</h5> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 安装主库</span>
+<span class="token function">docker</span> run <span class="token parameter variable">--name</span> mysql8-master <span class="token parameter variable">-d</span> <span class="token parameter variable">-p</span> <span class="token number">3306</span>:3306 <span class="token parameter variable">-e</span> <span class="token assign-left variable">MYSQL_ROOT_PASSWORD</span><span class="token operator">=</span><span class="token string">'123456'</span> <span class="token parameter variable">--privileged</span><span class="token operator">=</span>true <span class="token parameter variable">--restart</span> always mysql:8.0.21 <span class="token parameter variable">--lower_case_table_names</span><span class="token operator">=</span><span class="token number">1</span>
+
+<span class="token comment"># 安装从库</span>
+<span class="token function">docker</span> run <span class="token parameter variable">--name</span> mysql8-slave <span class="token parameter variable">-d</span> <span class="token parameter variable">-p</span> <span class="token number">33306</span>:3306 <span class="token parameter variable">-e</span> <span class="token assign-left variable">MYSQL_ROOT_PASSWORD</span><span class="token operator">=</span><span class="token string">'123456'</span> <span class="token parameter variable">--privileged</span><span class="token operator">=</span>true <span class="token parameter variable">--restart</span> always mysql:8.0.21 <span class="token parameter variable">--lower_case_table_names</span><span class="token operator">=</span><span class="token number">1</span>
+</code></pre></div><h6 id="命令详解"><a href="#命令详解" class="header-anchor">#</a> 命令详解：</h6> <ul><li>docker run:  Docker的命令，用于创建并启动一个新容器。</li> <li>--name mysql8-master:  设置容器的名称为 mysql8-master。</li> <li>-d:  以后台模式运行容器。</li> <li>-p 3306:3306:  将容器内的3306端口映射到宿主机的3306端口，这是MySQL的默认端口。</li> <li>-e MYSQL_ROOT_PASSWORD='123456':  设置环境变量，这里定义了MySQL的root用户的密码为 123456。</li> <li>--privileged=true:  给予容器额外的权限，这可以让容器访问宿主机的一些资源，通常用于需要特定内核权限的操作。</li> <li>--restart always:  设置容器的重启策略为总是重启，这意味着如果容器停止（无论是手动停止还是因为错误而停止），Docker都会自动重启它。</li> <li>mysql:8.0.21:  使用的Docker镜像是 mysql:8.0.21。</li> <li>--lower_case_table_names=1:  MySQL的一个配置参数，设置为1表示在存储表名时将其转换为小写，这在某些操作系统（如Windows）上有用，因为它们可能不区分文件名的大小写。</li></ul> <h6 id="配置主服务器"><a href="#配置主服务器" class="header-anchor">#</a> 配置主服务器</h6> <p>首先，你需要确保主服务器的MySQL配置启用了binlog。</p> <p><strong>进入主服务器容器：</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#进入主服务器容器：</span>
+<span class="token function">docker</span> <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> mysql8-master <span class="token function">bash</span>
+</code></pre></div><p><strong>编辑MySQL配置文件：</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#进入容器后更新软件包列表：</span>
+<span class="token function">apt-get</span> update
+
+<span class="token comment">#下载vim</span>
+<span class="token function">apt-get</span> <span class="token function">install</span> <span class="token function">vim</span>
+ 
+<span class="token comment">#编辑MySQL配置文件</span>
+<span class="token function">vim</span> /etc/mysql/my.cnf
+</code></pre></div><p>你可能需要找到MySQL的配置文件my.cnf（通常位于/etc/mysql/my.cnf或/etc/mysql/mysql.conf.d/mysqld.cnf），然后添加以下内容：</p> <div class="language- extra-class"><pre class="language-text"><code>[mysqld]
+log-bin=mysql-bin
+server-id=1 
+binlog-format=ROW # 推荐使用ROW格式
+expire_logs_days=10  # 根据需要设置日志过
+</code></pre></div><p><strong>重启MySQL容器：</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#退出容器</span>
+<span class="token builtin class-name">exit</span>
+
+<span class="token comment">#重启容器</span>
+<span class="token function">docker</span> restart mysql8-master
+
+<span class="token comment">#再次进入容器</span>
+<span class="token function">docker</span> <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> mysql8-master <span class="token function">bash</span>
+</code></pre></div><p><strong>创建复制用户：</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#登录到MySQL</span>
+mysql <span class="token parameter variable">-u</span> root <span class="token parameter variable">-p</span>
+</code></pre></div><p>执行SQL命令：</p> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token comment">-- 创建复制用户replica</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">USER</span> <span class="token string">'replica'</span><span class="token variable">@'%'</span> IDENTIFIED <span class="token keyword">BY</span> <span class="token string">'123456'</span><span class="token punctuation">;</span>
+
+<span class="token comment">-- 授权</span>
+<span class="token keyword">GRANT</span> <span class="token keyword">REPLICATION</span> SLAVE <span class="token keyword">ON</span> <span class="token operator">*</span><span class="token punctuation">.</span><span class="token operator">*</span> <span class="token keyword">TO</span> <span class="token string">'replica'</span><span class="token variable">@'%'</span><span class="token punctuation">;</span>
+
+<span class="token comment">-- 刷新权限</span>
+FLUSH <span class="token keyword">PRIVILEGES</span><span class="token punctuation">;</span>
+
+<span class="token comment">-- 查看MASTER状态</span>
+<span class="token keyword">SHOW</span> MASTER <span class="token keyword">STATUS</span><span class="token punctuation">;</span>
+</code></pre></div><p>记下File和Position的值，这将用于从服务器的配置。</p> <p><img src="C:%5CUsers%5CSlEddy%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240919155927808.png" alt="image-20240919155927808"></p> <h6 id="配置从服务器"><a href="#配置从服务器" class="header-anchor">#</a> 配置从服务器</h6> <p><strong>进入从服务器容器：</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#进入主服务器容器：</span>
+<span class="token function">docker</span> <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> mysql8-slave <span class="token function">bash</span>
+</code></pre></div><p><strong>编辑MySQL配置文件：</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#进入容器后更新软件包列表：</span>
+<span class="token function">apt-get</span> update
+
+<span class="token comment">#下载vim</span>
+<span class="token function">apt-get</span> <span class="token function">install</span> <span class="token function">vim</span>
+ 
+<span class="token comment">#编辑MySQL配置文件</span>
+<span class="token function">vim</span> /etc/mysql/my.cnf
+</code></pre></div><p>你可能需要找到MySQL的配置文件my.cnf（通常位于/etc/mysql/my.cnf或/etc/mysql/mysql.conf.d/mysqld.cnf），然后添加以下内容：</p> <div class="language- extra-class"><pre class="language-text"><code>[mysqld]
+server-id=2
+read-only=1  # 使从服务器为只读
+</code></pre></div><p><strong>重启MySQL容器：</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#退出容器</span>
+<span class="token builtin class-name">exit</span>
+
+<span class="token comment">#重启容器</span>
+<span class="token function">docker</span> restart mysql8-slave
+
+<span class="token comment">#查看容器名为mysql8-master的IP</span>
+<span class="token function">docker</span> inspect <span class="token parameter variable">-f</span> <span class="token string">'{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'</span> mysql8-master
+
+<span class="token comment">#尝试从从服务器容器手动连接到主服务器容器，以验证网络连接是否正常</span>
+<span class="token function">docker</span> <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> mysql8-slave mysql <span class="token parameter variable">-h</span> <span class="token number">172.17</span>.0.3 <span class="token parameter variable">-u</span> replica <span class="token parameter variable">-p</span>
+</code></pre></div><p><img src="C:%5CUsers%5CSlEddy%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240919150321131.png" alt="image-20240919150321131"></p> <p><strong>配置主从复制：</strong></p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#再次进入容器</span>
+<span class="token function">docker</span> <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> mysql8-slave <span class="token function">bash</span>
+
+<span class="token comment">#登录到MySQL</span>
+mysql <span class="token parameter variable">-u</span> root <span class="token parameter variable">-p</span>
+</code></pre></div><p>执行SQL命令，使用之前记下的File和Position：</p> <div class="language-sql extra-class"><pre class="language-sql"><code><span class="token comment">-- 在从服务器上设置主服务器的相关信息</span>
+ CHANGE MASTER <span class="token keyword">TO</span>
+  MASTER_HOST<span class="token operator">=</span><span class="token string">'172.17.0.3'</span><span class="token punctuation">,</span>
+  MASTER_USER<span class="token operator">=</span><span class="token string">'replica'</span><span class="token punctuation">,</span>
+  MASTER_PASSWORD<span class="token operator">=</span><span class="token string">'123456'</span><span class="token punctuation">,</span>
+  MASTER_LOG_FILE<span class="token operator">=</span><span class="token string">'mysql-bin.000002'</span><span class="token punctuation">,</span>
+  MASTER_LOG_POS<span class="token operator">=</span><span class="token number">54405</span><span class="token punctuation">;</span>
+
+<span class="token comment">-- 启动从服务器的复制进程</span>
+<span class="token keyword">START</span> SLAVE<span class="token punctuation">;</span>
+
+<span class="token comment">-- 显示从服务器的状态信息 并格式化显示</span>
+<span class="token keyword">SHOW</span> SLAVE <span class="token keyword">STATUS</span>\G
+</code></pre></div><p>确保Slave_IO_Running和Slave_SQL_Running状态为Yes。</p> <p><img src="C:%5CUsers%5CSlEddy%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240919155841698.png" alt="image-20240919155841698"></p> <h6 id="_3-测试复制"><a href="#_3-测试复制" class="header-anchor">#</a> 3. 测试复制</h6> <p>在主服务器上进行数据更改，然后在从服务器上验证这些更改是否被正确复制。</p> <p><strong>注意事项</strong></p> <p>确保主服务的<strong>全库导出和导入</strong>从服务器</p> <p>确保两个容器可以通过网络互相访问，如果它们在不同的Docker网络，需要适当配置网络设置。</p> <p>如果在配置过程中遇到权限或连接问题，检查防火墙和MySQL用户权限设置。</p> <p>适时备份重要数据，以防配置过程中出现意外。</p> <p>通过以上步骤，你可以在现有的MySQL容器中配置主从同步。</p> <h4 id="配置多个git账号"><a href="#配置多个git账号" class="header-anchor">#</a> 配置多个git账号</h4> <p>**需求：**一台电脑配置多个git账号，同一时间编写不同仓库项目</p> <p>**解决方案：**编写bat脚本</p> <p><strong>脚本信息如下：</strong></p> <div class="language-bat extra-class"><pre class="language-text"><code>:: 删除与https://gitee.com关联的Git凭据
+cmdkey /delete:git:https://gitee.com
+
+:: 为https://gitee.com添加新的Git凭据，用户名和密码需要替换为实际的git账户和密码
+cmdkey /generic:git:https://gitee.com /user:【git账户】 /pass:【git密码】
+
+:: 设置全局Git用户名，替换【名字】为实际用户名
+git config --global user.name 【名字】
+
+:: 设置全局Git用户邮箱，替换【邮箱】为实际邮箱地址
+git config --global user.email 【邮箱】
+
+:: 将git密码和git账户复制到系统剪贴板，替换
+echo 【git密码】【git账户】 | clip
+</code></pre></div><p>**注意事项：**将以上命令 复制为两套修改过账号密码的bat脚本，双击脚本执行即可实现自动切换git账户</p> <h3 id="提示表不存在问题"><a href="#提示表不存在问题" class="header-anchor">#</a> 提示表不存在问题</h3> <h4 id="问题描述"><a href="#问题描述" class="header-anchor">#</a> <strong>问题描述：</strong></h4> <p>提示表不存在问题Table 'jeecg-boot.QRTZ_LOCKS' doesn't exist</p> <h4 id="问题原因"><a href="#问题原因" class="header-anchor">#</a> <strong>问题原因：</strong></h4> <p>mysql数据库不区分大小写</p> <h4 id="解决方案"><a href="#解决方案" class="header-anchor">#</a> <strong>解决方案：</strong></h4> <p>设置mysql数据库不区分大小写</p> <p><strong>实际操作步骤</strong>：</p> <p><strong>进入容器：</strong></p> <p>docker exec -it 容器名|容器ID  bash</p> <p><img src="C:%5CUsers%5CSlEddy%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240917153131675.png" alt="image-20240917153131675"></p> <p><strong>更新软件包列表：</strong></p> <p>apt-get update</p> <p><img src="C:%5CUsers%5CSlEddy%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240917153036470.png" alt="image-20240917153036470"></p> <p><strong>下载vim：</strong></p> <p>apt-get install vim</p> <p><img src="C:%5CUsers%5CSlEddy%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240917153218798.png" alt="image-20240917153218798"></p> <p><strong>修改配置文件:</strong></p> <p>vim /etc/mysql/my.cnf</p> <p>在[mysqld]下添加如下：lower_case_table_names=1</p> <p>修改后输入 :wq 保存退出</p> <p><img src="C:%5CUsers%5CSlEddy%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240917153448979.png" alt="image-20240917153448979"></p> <p><strong>退出容器：</strong></p> <p>exit</p> <p><strong>重启容器：</strong></p> <p>docker restart 容器名|容器ID</p> <p><img src="C:%5CUsers%5CSlEddy%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240917155414561.png" alt="image-20240917155414561"></p> <p><strong>查看是否生效:</strong></p> <p>show global variables like '%lower_case%';</p> <h3 id="windows如何查看docker容器创建时的命令"><a href="#windows如何查看docker容器创建时的命令" class="header-anchor">#</a> Windows如何查看docker容器创建时的命令</h3> <h4 id="问题描述-2"><a href="#问题描述-2" class="header-anchor">#</a> <strong>问题描述：</strong></h4> <p>遗忘docker容器Redis的密码</p> <h4 id="解决方案-2"><a href="#解决方案-2" class="header-anchor">#</a> <strong>解决方案：</strong></h4> <p>使用 <code>runlike</code>、<code>rekcod</code>打印容器创建时的参数</p> <p><strong>实际操作步骤</strong>：</p> <p><strong>安装Python:</strong></p> <p>Python 官网：https://www.python.org/</p> <p>按 <strong>Win+R</strong> 键，输入 cmd 调出命令提示符，输入 python:</p> <p><img src="C:%5CUsers%5CSlEddy%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240917165537428.png" alt="image-20240917165537428"></p> <p>在环境变量中添加Python目录：</p> <p><strong>在命令提示框中(cmd) :</strong> 输入</p> <div class="language- extra-class"><pre class="language-text"><code>path=%path%;C:\Python 
+</code></pre></div><p>按下&quot;Enter&quot;。</p> <p><strong>注意:</strong> C:\Python 是Python的安装目录。</p> <p><strong>安装runlike:</strong></p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 安装python3后，再使用pip安装runlike</span>
+pip3 <span class="token function">install</span> runlike
+
+<span class="token comment"># 使用runlike命令 </span>
+<span class="token comment"># runlike -p 容器名字|容器ID</span>
+runlike <span class="token parameter variable">-p</span> redis-test
+</code></pre></div><p><img src="C:%5CUsers%5CSlEddy%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240917165347803.png" alt="image-20240917165347803"></p> <p><img src="C:%5CUsers%5CSlEddy%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240917165656114.png" alt="image-20240917165656114"></p> <h3 id="windows安装fnm"><a href="#windows安装fnm" class="header-anchor">#</a> windows安装fnm</h3> <p><a href="https://link.segmentfault.com/?enc=Uf5%2Fp6Jv4Mv1TjVGSrbvTA%3D%3D.0pTZaGAw7SYqXVcz5KUCAxUDX7MsscAT5C9wfcKQUJg%3D" target="_blank" rel="noopener noreferrer">fnm <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>是一款快速简单 🚀 的 Node.js 版本管理器，使用 Rust 构建。</p> <p><img src="C:%5CUsers%5CSlEddy%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240917170235884.png" alt="image-20240917170235884"></p> <h4 id="主要特点包括"><a href="#主要特点包括" class="header-anchor">#</a> 主要特点包括：</h4> <ul><li>🌎 跨平台支持，包括：macOS、Windows、Linux；</li> <li>✨ 单一文件，轻松安装，即时启动 ；</li> <li>🚀 以速度为设计理念；</li> <li>📂 适用于 <code>.node-version</code> 和 <code>.nvmrc</code> 文件；</li></ul> <h4 id="安装方式-2"><a href="#安装方式-2" class="header-anchor">#</a> 安装方式</h4> <p>macOS / Linux 环境：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># bash, zsh and fish shells</span>
+<span class="token function">curl</span> <span class="token parameter variable">-fsSL</span> https://fnm.vercel.app/install <span class="token operator">|</span> <span class="token function">bash</span>
+</code></pre></div><p>Windows 环境：</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># layouts.download.codeBox.installsFnm 下载fnm</span>
+winget <span class="token function">install</span> Schniz.fnm
+
+<span class="token comment"># layouts.download.codeBox.fnmEnvSetup 为 fnm 设置你的 shell ：示例 power-shell设置环境变量 </span>
+fnm <span class="token function">env</span> --use-on-cd <span class="token parameter variable">--shell</span> power-shell <span class="token operator">|</span> Out-String <span class="token operator">|</span> Invoke-Expression
+
+<span class="token comment"># layouts.download.codeBox.downloadAndInstallNodejs  下载20版本的node.js并使用</span>
+fnm use --install-if-missing <span class="token number">20</span>
+
+<span class="token comment"># layouts.download.codeBox.verifiesRightNodejsVersion 查看node.js版本号</span>
+<span class="token function">node</span> <span class="token parameter variable">-v</span> <span class="token comment"># layouts.download.codeBox.shouldPrint</span>
+
+<span class="token comment"># layouts.download.codeBox.verifiesRightNpmVersion 查看npm版本号</span>
+<span class="token function">npm</span> <span class="token parameter variable">-v</span> <span class="token comment"># layouts.download.codeBox.shouldPrint</span>
+</code></pre></div><h4 id="常用命令-2"><a href="#常用命令-2" class="header-anchor">#</a> 常用命令</h4> <div class="language-bash extra-class"><pre class="language-bash"><code>fnm <span class="token parameter variable">-h</span>             <span class="token comment"># 查看帮助</span>
+fnm <span class="token function">install</span> <span class="token number">20.15</span>.0 <span class="token comment"># 安装指定 Node.js 版本</span>
+fnm use <span class="token number">20.15</span>.0     <span class="token comment"># 使用指定 Node.js 版本</span>
+fnm default <span class="token number">20.15</span>.0 <span class="token comment"># 设置默认 Node.js 版本</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/efficiency/开发环境搭建-docker.html">
+        开发环境搭建-docker
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/assets/js/app.900574fc.js" defer></script><script src="/assets/js/2.4e96b99c.js" defer></script><script src="/assets/js/1.04576d65.js" defer></script><script src="/assets/js/61.2641dcea.js" defer></script>
+  </body>
+</html>
